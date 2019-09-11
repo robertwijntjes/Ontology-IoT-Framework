@@ -39,3 +39,13 @@ request.post({
     }
     //console.log(res)
 })
+
+/*
+1. 
+  Test 1: Send a single request of data and let the server process it individually.
+  Test 2: Send two requests and let the server process the two together.
+
+  
+
+
+*/

@@ -23,6 +23,8 @@ app.use(express.static(publicDirectoryPath))
 app.set("port", process.env.PORT || 3000);
 app.use(bodyParser.json());
 
+const database = []
+
 app.get('', (req, res) => {
     res.render('index', {
         title: '服务器接口',
@@ -57,7 +59,10 @@ app.post('/interface/data',(req,res)=>{
     const result = simCal(req.body)
     const size = req.get("content-length")
     // size equal to body size in Bytes*
-    console.log(req.body)
+    //console.log(req.body)
+    database.push({ITEM:req.body})
+
+    console.log(database)
     
     res.send({status:result,datasize:size})
 
