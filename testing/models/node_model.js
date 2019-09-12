@@ -4,10 +4,11 @@ var Mixed= mongoose.Schema.Types.Mixed;
 
 
 class ont_node{
-    constructor(nodeName,relationship,connected_to,attributes){
+    constructor(nodeName,relationship,connected_to,linked_to,attributes){
         this.nodeName = nodeName
         this.relationship = relationship
         this.connected_to = connected_to
+        this.linked_to = linked_to
         this.attributes = attributes
     }
 }
@@ -26,6 +27,10 @@ const nodeSchema = new mongoose.Schema({
         },
         connected_to:{
             type:  Mixed,
+            required: true
+        },
+        linked_to:{
+            type: Mixed,
             required: true
         },
         attributes:{

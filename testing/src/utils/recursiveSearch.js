@@ -15,9 +15,6 @@ const recursiveSearch = (term,currentNode) =>{
         return null
     }
 }
-
-
-console.log({Result:result})
 module.exports = recursiveSearch
 
 
