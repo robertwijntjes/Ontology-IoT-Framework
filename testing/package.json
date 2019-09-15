@@ -12,6 +12,8 @@
     "json-find": "^2.0.7",
     "mongoose": "^5.7.0",
     "n3": "^1.2.0",
-    "rdf-object": "^1.1.1"
+    "node-wordnet": "^0.1.12",
+    "rdf-object": "^1.1.1",
+    "string-similarity": "^3.0.0"
   }
 }

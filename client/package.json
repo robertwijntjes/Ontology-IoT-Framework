@@ -6,7 +6,7 @@
   "scripts": {
     "client1": "node src/client_1.js",
     "client2": "node src/client_2.js",
-    "runall": ""
+    "runall": "node src/client_1.js && node src/client_2.js"
   },
   "author": "",
   "license": "ISC",
