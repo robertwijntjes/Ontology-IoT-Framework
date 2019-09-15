@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client1": "node src/client_1.js",
+    "client2": "node src/client_2.js",
+    "runall": ""
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +14,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "hbs": "^4.0.4",
+    "mongoose": "^5.7.0",
     "rdf-object": "^1.1.1",
     "request": "^2.88.0"
   },

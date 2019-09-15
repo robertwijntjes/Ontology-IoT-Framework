@@ -23,7 +23,7 @@ app.use(express.static(publicDirectoryPath))
 app.set("port", process.env.PORT || 3000);
 app.use(bodyParser.json());
 
-const database = []
+var database = []
 
 app.get('', (req, res) => {
     res.render('index', {
@@ -58,11 +58,26 @@ app.get('/interface',(req,res)=>{
 app.post('/interface/data',(req,res)=>{
     const result = simCal(req.body)
     const size = req.get("content-length")
+    var search_parm = null
     // size equal to body size in Bytes*
     //console.log(req.body)
-    database.push({ITEM:req.body})
-
+    if(database.length == 0){
+        database.push(req.body)
+    }
+    else{
+        for(x in database){
+            if(database[x].Client == req.body.Client){
+                database[x].Response = req.body.Response
+                search_parm = 1
+            }
+        }
+        if(search_parm == null){
+            database.push(req.body)
+        }
+        }
+ 
     console.log(database)
+    console.log()
     
     res.send({status:result,datasize:size})
 
