@@ -1,9 +1,7 @@
 var tcom = require('thesaurus-com');
 
 const antonyms = (ontology) =>{
-    
-    const term = ontology.FoundNode.nodeName
-    return tcom.search(term).antonyms[0]
+    return tcom.search(ontology.FoundNode.nodeName).antonyms.join()
 }
 
 module.exports = antonyms

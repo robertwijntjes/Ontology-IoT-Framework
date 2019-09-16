@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const bodyParser = require("body-parser")
 const simCal = require('./utils/simCal')
+const simcheck = require('./utils/SimCheck')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -81,6 +82,10 @@ app.post('/interface/data',(req,res)=>{
     
     res.send({status:result,datasize:size})
 
+})
+
+app.get('/interface/simcal',(req,res)=>{
+    res.send(simcheck(database[0].Response,database[1].Response))
 })
 
 
