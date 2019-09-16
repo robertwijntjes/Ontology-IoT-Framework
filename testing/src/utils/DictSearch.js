@@ -1,5 +1,5 @@
 const natural = require('natural')
-var wordnet = new natural.WordNet()
+const wordnet = new natural.WordNet()
 
 const dictSearch = (searchTerm) => {
     wordnet.lookup(searchTerm, function(results) {
@@ -15,10 +15,4 @@ const dictSearch = (searchTerm) => {
     });
 }
 
-//dictSearch('equipment')
-const a = 'something is a unique equipment for blood pressure'
-const b = 'special equipement for measuring heart'
-dictSearch('heart monitor')
-
-// First take sentence and clean
-// next 
+module.exports = dictSearch

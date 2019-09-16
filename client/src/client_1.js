@@ -3,12 +3,9 @@ const request = require('request')
 
 const recursive = require('./utils/calculation/recursiveSearch')
 const distance_center = require('./utils/single ontology cal/distance-center')
-const parent_distance = require('./utils/single ontology cal/parent-child')
-const wordnet_sim = require('./utils/single ontology cal/wordnet')
 // Utilities
 
 const ontology_1 = require('../db/data/ontology1')
-const ontology_2 = require('../db/data/ontology2')
 // Data
 
 request.post({
