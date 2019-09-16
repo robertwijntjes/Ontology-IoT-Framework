@@ -16,8 +16,9 @@
     "node-wordnet": "^0.1.12",
     "rdf-object": "^1.1.1",
     "request": "^2.88.0",
+    "sqlite3": "^4.1.0",
     "string-similarity": "^3.0.0",
-    "wordnet-db": "^3.1.11",
-    "wordnet-magic": "^0.3.0"
+    "thesaurus-com": "^1.2.3",
+    "wordnet-db": "^3.1.11"
   }
 }

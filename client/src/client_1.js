@@ -3,8 +3,9 @@ const request = require('request')
 
 const recursive = require('./utils/calculation/recursiveSearch')
 const parent_child = require('./utils/single ontology cal/parent-child')
+const antonyms = require('./utils/single ontology cal/antonyms')
 const distance_center = require('./utils/single ontology cal/distance-center')
-const simcheck = require('./utils/single ontology cal/SimCheck')
+const simcheck = require('./utils/dual ontology/SimCheck')
 // Utilities
 
 const ontology_1 = require('../db/data/ontology1')
@@ -13,7 +14,7 @@ const ontology_1 = require('../db/data/ontology1')
 request.post({
     
     url:"http://127.0.0.1:3000/interface/data",
-    json: { Client:1 , Response:parent_child(recursive("equipment",ontology_1)) }
+    json: { Client:1 , Response:antonyms(recursive("vulnerability",ontology_1)) }
 }, 
 (error , res , body)=>{
     if(error){
@@ -24,3 +25,12 @@ request.post({
     }
     //console.log(res)
 })
+
+
+/*
+1. Amount of children the node has:     parent_child(recursive("equipment",ontology_1))
+2. The depth of the node:               distance_center(recursive("equipment",ontology_1)) 
+3. Similarity Calculation:              
+4. Check Node Attributes:               
+
+*/

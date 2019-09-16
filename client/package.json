@@ -16,7 +16,8 @@
     "hbs": "^4.0.4",
     "mongoose": "^5.7.0",
     "rdf-object": "^1.1.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "thesaurus-com": "^1.2.3"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"
