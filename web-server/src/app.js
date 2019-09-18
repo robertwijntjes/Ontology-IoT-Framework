@@ -85,11 +85,8 @@ app.post('/interface/data',(req,res)=>{
 })
 
 app.get('/interface/simcal',(req,res)=>{
-
-    console.log({Client:database[0].Client,Input:database[0].Response,Client:database[1].Client,Input:database[1].Response})
-
-
-
+    // console.log({Client:database[0].Client,Input:database[0].Response,Client:database[1].Client,Input:database[1].Respons
+    console.log({Input_1:database[0].Response,Input_2:database[1].Response})
     res.send(simcheck(database[0].Response,database[1].Response))
 })
 

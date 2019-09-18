@@ -16,7 +16,7 @@ const ontology_1 = require('../db/data/ontology1')
 request.post({
     
     url:"http://127.0.0.1:3000/interface/data",
-    json: { Client:1 , Response:attributes_list(recursive("invasive",ontology_1)) }
+    json: { Client:1 , Response:synonyms_list(recursive("invasive",ontology_1)) }
 }, 
 (error , res , body)=>{
     if(error){
@@ -25,7 +25,6 @@ request.post({
     else{
         console.log(body)
     }
-    //console.log(res)
 })
 
 
