@@ -19,6 +19,5 @@ module.exports = {
     antonyms_list,
     antonyms_amount,
     antonyms_array
-
 }
 

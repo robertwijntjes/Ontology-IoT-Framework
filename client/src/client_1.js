@@ -1,31 +1,54 @@
 const request = require('request')
+const rp = require('request-promise')
 // Packages
 
-const recursive = require('./utils/TreeSearch/recursiveSearch')
-const parent_child = require('./utils/single ontology cal/parent-child')
-const antonyms = require('./utils/single ontology cal/antonyms')
-const distance_center = require('./utils/single ontology cal/distance-center')
-const simcheck = require('./utils/dual ontology/SimCheck')
-const {synonyms_amount,synonyms_list} = require('./utils/single ontology cal/synonyms')
-const {attributes_amount,attributes_list} = require('./utils/single ontology cal/attributes')
-// Utilities
-
-const ontology_1 = require('../db/data/ontology1')
+const {option_1,option_2,option_3} = require('../db/options/options_cl1')
 // Data
 
-request.post({
-    
-    url:"http://127.0.0.1:3000/interface/data",
-    json: { Client:1 , Response:synonyms_list(recursive("invasive",ontology_1)) }
-}, 
-(error , res , body)=>{
-    if(error){
-        console.log(error)
-    }
-    else{
-        console.log(body)
-    }
-})
+
+async function RequestLineExecute() {
+    const data = {}
+
+    await rp(option_1)
+    .then(function (parsedBody) {
+        console.log(parsedBody)
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
+    // First funciton execution
+
+    await rp(option_2)    
+    .then(function (parsedBody) {
+        console.log(parsedBody)
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
+    // Second Function Execution
+
+    await rp(option_3)    
+    .then(function (parsedBody) {
+        console.log(parsedBody)
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
+    // Third Function Execution
+}
+
+RequestLineExecute()
+.catch(error=> console.log)
+
+
+
+
+
+
+
+
+
+
 
 
 /*
