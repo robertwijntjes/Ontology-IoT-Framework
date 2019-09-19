@@ -13,19 +13,19 @@ const ontology_2 = require('../data/ontology2')
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[synonyms_array(recursive("equipment",ontology_2)) ]}
+    json: { Client:2 , Response:[synonyms_list(recursive("vulnerability",ontology_2)) ]}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[attributes_array(recursive("heart beat monitor",ontology_2)) ]}
+    json: { Client:2 , Response:[attributes_list(recursive("vulnerability",ontology_2)) ]}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[attributes_list(recursive("vulnerability",ontology_2)) ]}
+    json: { Client:2 , Response:[antonyms_list(recursive("vulnerability",ontology_2)) ]}
 }
 
 module.exports = {
