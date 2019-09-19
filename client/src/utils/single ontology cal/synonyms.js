@@ -1,18 +1,18 @@
 var tcom = require('thesaurus-com');
 
 const synonyms_list = (ontology) =>{
-    return tcom.search(ontology.FoundNode.nodeName).synonyms
+    return {operation:tcom.search(ontology.FoundNode.nodeName).synonyms
     .slice(0,8)
-    .join()
+    .join(),type:'synonyms_list'}
 }
 
 const synonyms_amount = (ontology) =>{
-    return tcom.search(ontology.FoundNode.nodeName).synonyms.length
+    return {operation:tcom.search(ontology.FoundNode.nodeName).synonyms.length,type:'synonyms_amount'}
 }
 
 const synonyms_array = (ontology) =>{
-    return tcom.search(ontology.FoundNode.nodeName).synonyms
-    .slice(0,8)
+    return {operation:tcom.search(ontology.FoundNode.nodeName).synonyms
+    .slice(0,8),type:'synonyms_array'}
 }
 
 

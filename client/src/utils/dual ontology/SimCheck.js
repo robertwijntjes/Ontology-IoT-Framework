@@ -1,6 +1,5 @@
 const request = require('request')
 
-
 const simcheck = (text_1,text_2) =>{
     console.log(text_1,text_2)
     request.post({

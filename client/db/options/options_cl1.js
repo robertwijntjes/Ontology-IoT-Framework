@@ -8,24 +8,24 @@ const {attributes_list,attributes_amount,attributes_array} = require('../../src/
 // Utilities
 
 const ontology_1 = require('../data/ontology1')
-
+// Ontology Import
 
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:1 , Response:synonyms_list(recursive("invasive",ontology_1)) }
+    json: { Client:1 , Response:[synonyms_array(recursive("invasive",ontology_1)) ]}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:1 , Response:attributes_list(recursive("invasive",ontology_1)) }
+    json: { Client:1 , Response:[attributes_list(recursive("invasive",ontology_1))] }
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:1 , Response:antonyms_list(recursive("invasive",ontology_1)) }
+    json: { Client:1 , Response:[attributes_list(recursive("invasive",ontology_1))]}
 }
 
 module.exports = {

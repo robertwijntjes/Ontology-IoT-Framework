@@ -4,6 +4,7 @@ const hbs = require('hbs')
 const bodyParser = require("body-parser")
 const simCal = require('./utils/simCal')
 const simcheck = require('./utils/SimCheck')
+const contains = require('./utils/contains')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -60,24 +61,47 @@ app.post('/interface/data',(req,res)=>{
     const result = simCal(req.body)
     const size = req.get("content-length")
     var search_parm = null
-    // size equal to body size in Bytes*
-    //console.log(req.body)
-    if(database.length == 0){
+    if(database == null){
+        console.log('@Database Empty - Directly Pushing Information')
+        console.log(req.body)
         database.push(req.body)
+        console.log()
+    }
+    if(!contains(database,req.body.Client)){
+        console.log('@Pushing New Clients Information')
+        console.log(req.body)
+        database.push(req.body)
+        console.log()
     }
     else{
+        console.log('@Response Content needing Adjustment')
         for(x in database){
             if(database[x].Client == req.body.Client){
-                database[x].Response = req.body.Response
-                search_parm = 1
+                for(z in database[x].Response){
+                    if(database[x].Response[z].type == req.body.Response[0].type){
+                        console.log('---Adjusting Response Content')
+                        console.log(req.body.Response)
+                        database[x].Response[z] = req.body.Response
+                        console.log()
+                    }
+                    else{
+                        console.log('---Adding new Response Content')
+                        console.log(req.body.Response)
+                        database[x].Response.push(req.body.Response)
+                        console.log()
+                    }
+                }
             }
         }
-        if(search_parm == null){
-            database.push(req.body)
-        }
-        }
- 
-    console.log(database)
+    }
+
+
+    
+
+    console.log('Whole Database')
+    for(x in database.sort(database.Client)){
+        console.log(database[x])
+    }
     console.log()
     
     res.send({status:result,datasize:size})

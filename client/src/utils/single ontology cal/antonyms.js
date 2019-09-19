@@ -1,18 +1,18 @@
 var tcom = require('thesaurus-com');
 
 const antonyms_list = (ontology) =>{
-    return tcom.search(ontology.FoundNode.nodeName).antonyms
+    return {operation:tcom.search(ontology.FoundNode.nodeName).antonyms
     .slice(0,8)
-    .join()
+    .join(),type:'antonyms_list'}
 }
 
 const antonyms_amount = (ontology) =>{
-    return tcom.search(ontology.FoundNode.nodeName).antonyms.length
+    return {operation:tcom.search(ontology.FoundNode.nodeName).antonyms.length,type:'antonyms_amount'}
 }
 
 const antonyms_array = (ontology) =>{
-    return tcom.search(ontology.FoundNode.nodeName).antonyms
-    .slice(0,8)
+    return {operation:tcom.search(ontology.FoundNode.nodeName).antonyms
+    .slice(0,8),type:'antonyms_array'}
 }
 
 module.exports = {
