@@ -66,7 +66,7 @@ const db_sort = (database,req) =>{
     
     console.log()
 
-    return database
+    return database.sort(database.Client)
 }
 
 module.exports = db_sort
