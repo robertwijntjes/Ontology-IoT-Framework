@@ -6,7 +6,10 @@
   "scripts": {
     "client1": "node src/client_1.js",
     "client2": "node src/client_2.js",
-    "runall": "node src/client_1.js && node src/client_2.js"
+    "client3": "node src/client_3.js",
+    "client4": "node src/client_4.js",
+    "runall": "node src/client_1.js && node src/client_2.js",
+    "testall": "node src/client_1.js && node src/client_2.js && node src/client_3.js && node src/client_4.js"
   },
   "author": "",
   "license": "ISC",
