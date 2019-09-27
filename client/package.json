@@ -15,10 +15,12 @@
     "express": "^4.17.1",
     "hbs": "^4.0.4",
     "mongoose": "^5.7.0",
+    "natural": "^0.6.3",
     "rdf-object": "^1.1.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "thesaurus-com": "^1.2.3"
+    "thesaurus-com": "^1.2.3",
+    "wordnet-db": "^3.1.11"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"

@@ -1,10 +1,11 @@
 const request = require('request')
 const rp = require('request-promise')
+// const dictSearch = require('./utils/TreeSearch/dictSearch')
 // Packages
 
 const {option_1,option_2,option_3} = require('../db/options/options_cl1')
 // Data
-
+// console.log(dictSearch('vulnerability'))
 
 async function RequestLineExecute() {
     const data = {}
