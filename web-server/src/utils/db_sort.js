@@ -3,6 +3,10 @@ const contains = require('./contains')
 const same = require('./same')
 
 const db_sort = (database,req) =>{
+    console.log()
+    console.log(':::::::::::::::::      Results      :::::::::::::::::::')
+    console.log()
+
     console.log(chalk.red('@') + chalk.blue('Client Number') + ': ' + req.body.Client)
 
     if(database == null){
@@ -51,6 +55,17 @@ const db_sort = (database,req) =>{
         }
        
     }
+
+    console.log(chalk.red('@') + chalk.blue('Whole Database'))
+    for(x in database.sort(database.Client)){
+        console.log(database[x])
+    }
+    console.log()
+    console.log()
+    console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::')
+    
+    console.log()
+
     return database
 }
 

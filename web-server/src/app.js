@@ -63,26 +63,16 @@ app.get('/interface',(req,res)=>{
 app.post('/interface/data',(req,res)=>{
     const result = simCal(req.body)
     const size = req.get("content-length")
-    console.log()
-    console.log('::::::::::::::::::::::::::::::::::::')
-    console.log()
-
     const rf_db = db_sort(database,req)
-
-    console.log(chalk.red('@') + chalk.blue('Whole Database'))
-    for(x in rf_db.sort(rf_db.Client)){
-        console.log(rf_db[x])
-    }
-    console.log()
     
-    res.send({status:result,datasize:size})
+    res.send({status:result,datasize:size,data:rf_db})
 
 })
 
 app.get('/interface/simcal',(req,res)=>{
-    // console.log({Client:database[0].Client,Input:database[0].Response,Client:database[1].Client,Input:database[1].Respons
-    console.log({Input_1:database[0].Response,Input_2:database[1].Response})
-    res.send(simcheck(database[0].Response,database[1].Response))
+    // console.log(database[0].Response[0].operation)
+    res.send(simcheck(database[0].Response[0].operation,database[1].Response[1].operation))
+
 })
 
 
