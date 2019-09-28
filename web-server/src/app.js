@@ -2,11 +2,19 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 const bodyParser = require("body-parser")
+// System Modules
+
 const simCal = require('./utils/simCal')
 const simcheck = require('./utils/SimCheck')
 const chalk = require('chalk')
 const db_sort = require('./utils/db_sort')
-// Modules reference
+// Custom Modules
+
+
+const doh = require('./utils/Complex/SDAMO/DOH')
+const sb = require('./utils/Complex/SDAMO/SB')
+const scd = require('./utils/Complex/SDAMO/SCD')
+// SDAMO Algorithm
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -72,6 +80,7 @@ app.post('/interface/data',(req,res)=>{
 app.get('/interface/simcal',(req,res)=>{
     // console.log(database[0].Response[0].operation)
     res.send(simcheck(database[0].Response[0].operation,database[1].Response[1].operation))
+
 
 })
 

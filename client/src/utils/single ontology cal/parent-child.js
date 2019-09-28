@@ -1,5 +1,5 @@
 const parent_child = (ontology) =>{
-    return {Result:ontology.FoundNode.connected_to.length,input:ontology.FoundNode.nodeName}
+    return {operation:ontology.FoundNode.connected_to.length,type:'parent_child',input:ontology.FoundNode.nodeName}
 }
 
 module.exports = parent_child

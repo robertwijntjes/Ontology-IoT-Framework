@@ -1,5 +1,5 @@
-const parent_child = (ontology) =>{
-    return {Result:ontology.FoundNode.level,input:ontology.FoundNode.nodeName}
+const distance_center = (ontology) =>{
+    return {operation:ontology.FoundNode.level,type:'distance_center',input:ontology.FoundNode.nodeName}
 }
 
-module.exports = parent_child
+module.exports = distance_center
