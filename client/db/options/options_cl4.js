@@ -21,7 +21,7 @@ const option_1 = {
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[attributes_list(recursive("instrument",ontology_4)) ]}
+    json: { Client:4 , Response:[attributes_list(recursive("cannula",ontology_4)) ]}
 }
 
 const option_3 = {
