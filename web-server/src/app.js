@@ -16,6 +16,12 @@ const sb = require('./utils/Complex/SDAMO/SB')
 const scd = require('./utils/Complex/SDAMO/SCD')
 // SDAMO Algorithm
 
+const density = require('./utils/Complex/TLND/density')
+const link_weight = require('./utils/Complex/TLND/link_weight')
+const node_depth = require('./utils/Complex/TLND/node_depth')
+const type_of_link = require('./utils/Complex/TLND/type_of_link')
+// TLND Algorithm
+
 const app = express()
 const port = process.env.PORT || 3000
 // application initilization
@@ -80,7 +86,27 @@ app.post('/interface/data',(req,res)=>{
 app.get('/interface/simcal',(req,res)=>{
     // console.log(database[0].Response[0].operation)
     res.send(simcheck(database[0].Response[0].operation,database[1].Response[1].operation))
+})
 
+app.get('/interface/tlnd',(req,res)=>{
+    for(x in database[0].Response){
+        if(database[0].Response[x].type === "tlnd_weight"){
+
+        }
+        if(database[0].Response[x].type === "tlnd_node_density"){
+
+        }
+        if(database[0].Response[x].type === "tlnd_dist"){
+
+        }
+        if(database[0].Response[x].type === "tlnd_link_type"){
+
+        }
+        
+    }
+    // if(database[0].Response[0].type == 'tlnd_weight'){
+
+    // }
 
 })
 

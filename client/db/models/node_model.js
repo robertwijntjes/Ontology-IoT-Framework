@@ -30,7 +30,7 @@ const nodeSchema = new mongoose.Schema({
             required: true
         },
         linked_to:{
-            type: String,
+            type: Array,
             required: true
         },
         level:{
