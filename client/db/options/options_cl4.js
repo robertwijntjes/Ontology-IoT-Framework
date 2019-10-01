@@ -23,19 +23,19 @@ const ontology_4 = require('../data/ontology4')
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_weight(recursive("instrument",ontology_4)) ]}
+    json: { Client:4 , Response:[tlnd_node_density(recursive("instrument",ontology_4)) ]}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[attributes_list(recursive("cannula",ontology_4)) ]}
+    json: { Client:4 , Response:[tlnd_weight(recursive("instrument",ontology_4)) ]}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[antonyms_list(recursive("instrument",ontology_4)) ]}
+    json: { Client:4 , Response:[tlnd_dist(recursive("instrument",ontology_4)) ]}
 }
 
 

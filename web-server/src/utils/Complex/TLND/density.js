@@ -1,5 +1,5 @@
 const density = (density1,density2) =>{
-
+    console.log({client1:density1,client2:density2})
 }
 module.exports = density
 

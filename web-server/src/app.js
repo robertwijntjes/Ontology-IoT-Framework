@@ -22,6 +22,8 @@ const node_depth = require('./utils/Complex/TLND/node_depth')
 const type_of_link = require('./utils/Complex/TLND/type_of_link')
 // TLND Algorithm
 
+const result_comp = require('./utils/result_comp')
+
 const app = express()
 const port = process.env.PORT || 3000
 // application initilization
@@ -43,6 +45,7 @@ app.use(bodyParser.json());
 // Setup static directory to serve and bodyparser
 
 var database = []
+
 // Ghost Database
 
 app.get('', (req, res) => {
@@ -89,24 +92,8 @@ app.get('/interface/simcal',(req,res)=>{
 })
 
 app.get('/interface/tlnd',(req,res)=>{
-    for(x in database[0].Response){
-        if(database[0].Response[x].type === "tlnd_weight"){
 
-        }
-        if(database[0].Response[x].type === "tlnd_node_density"){
-
-        }
-        if(database[0].Response[x].type === "tlnd_dist"){
-
-        }
-        if(database[0].Response[x].type === "tlnd_link_type"){
-
-        }
-        
-    }
-    // if(database[0].Response[0].type == 'tlnd_weight'){
-
-    // }
+    res.send(result_comp(database,['tlnd_dist','tlnd_node_density','tlnd_weight','type_of_link']))
 
 })
 
