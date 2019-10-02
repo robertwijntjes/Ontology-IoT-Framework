@@ -9,7 +9,7 @@
     "client3": "node src/client_3.js",
     "client4": "node src/client_4.js",
     "runall": "node src/client_1.js && node src/client_2.js && node src/client_3.js && node src/client_4.js",
-    "c34":"node src/client_3.js&&node src/client_4.js"
+    "c34": "node src/client_3.js&&node src/client_4.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "thesaurus-com": "^1.2.3",
+    "underscore": "^1.9.1",
     "wordnet-db": "^3.1.11"
   },
   "devDependencies": {
