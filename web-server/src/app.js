@@ -22,7 +22,7 @@ const node_depth = require('./utils/Complex/TLND/node_depth')
 const type_of_link = require('./utils/Complex/TLND/type_of_link')
 // TLND Algorithm
 
-const result_comp = require('./utils/result_comp')
+const result_comp = require('./utils/payload_prep/result prep')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -92,9 +92,11 @@ app.get('/interface/simcal',(req,res)=>{
 })
 
 app.get('/interface/tlnd',(req,res)=>{
-
     res.send(result_comp(database,['tlnd_dist','tlnd_node_density','tlnd_weight','type_of_link']))
+})
 
+app.get('/interface/sdamo',(req,res)=>{
+    res.send(result_comp(database,['distance_center']))
 })
 
 

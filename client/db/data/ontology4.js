@@ -1,5 +1,6 @@
 const ont_node = require('../models/node_model')
 const size = 8
+const height = 4
 
 // // Central Node
 const instrument = new ont_node({
@@ -75,5 +76,6 @@ blood_pressure_strap.connected_to = [leather_component,velcro_component]
 
 module.exports = {
     instrument,
-    size
+    size,
+    height
 }

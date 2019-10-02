@@ -1,5 +1,6 @@
 const ont_node = require('../models/node_model')
 const size = 7
+const height = 3
 
 // // Central Node
 const equipment = new ont_node({
@@ -67,5 +68,6 @@ non_invasive.connected_to = [heart_monitor]
 
 module.exports = {
     equipment,
-    size
+    size,
+    height
 }

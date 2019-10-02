@@ -15,7 +15,7 @@ const tlnd_node_density = require('../../src/utils/single ontology cal/tlnd_node
 const tlnd_weight = require('../../src/utils/single ontology cal/tlnd_weight')
 // tlnd specific Calculation
 
-const {instrument,size} = require('../data/ontology4')
+const {instrument,size,height} = require('../data/ontology4')
 // Ontology Import
 
 
@@ -23,19 +23,19 @@ const {instrument,size} = require('../data/ontology4')
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_node_density(recursive("instrument",instrument),size) ]}
+    json: { Client:4 , Response:[distance_center(recursive("liability",instrument)) ],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_weight(recursive("instrument",instrument),size) ]}
+    json: { Client:4 , Response:[tlnd_weight(recursive("liability",instrument)) ],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_dist(recursive("instrument",instrument)) ]}
+    json: { Client:4 , Response:[tlnd_dist(recursive("liability",instrument)) ],height:height}
 }
 
 

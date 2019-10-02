@@ -1,5 +1,6 @@
 const ont_node = require('../models/node_model')
 const size = 6
+const height = 3
 
 // // Central Node
 const tool = new ont_node({
@@ -55,5 +56,6 @@ susceptibility.connected_to = [flu]
 
 module.exports = {
     tool,
-    size
+    size,
+    height
 }

@@ -1,5 +1,6 @@
 const ont_node = require('../models/node_model')
 const size = 7
+const height = 4
 
 // // Central Node
 const equipment = new ont_node({
@@ -68,5 +69,6 @@ intradermal_syringe.connected_to = [plastic_component]
 
 module.exports = {
     equipment,
-    size
+    size,
+    height
 }
