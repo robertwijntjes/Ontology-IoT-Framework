@@ -22,7 +22,7 @@ const node_depth = require('./utils/Complex/TLND/node_depth')
 const type_of_link = require('./utils/Complex/TLND/type_of_link')
 // TLND Algorithm
 
-const result_comp = require('./utils/payload_prep/result prep')
+const {tlnd_prep,sdamo_prep} = require('./utils/payload_prep/result prep')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -92,11 +92,17 @@ app.get('/interface/simcal',(req,res)=>{
 })
 
 app.get('/interface/tlnd',(req,res)=>{
-    res.send(result_comp(database,['tlnd_dist','tlnd_node_density','tlnd_weight','type_of_link']))
+    res.send(tlnd_prep(database,['tlnd_dist','tlnd_node_density','tlnd_weight','type_of_link']))
 })
 
 app.get('/interface/sdamo',(req,res)=>{
-    res.send(result_comp(database,['distance_center']))
+    const result = sdamo_prep(database,['distance_center','ancestor_search'])
+    console.log(result)
+    const a = doh(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value,database[0].height)
+    const b = sb(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
+    const c = scd(result.semantic_coincidence_degree[0].value,result.semantic_coincidence_degree[1].value)
+    console.log({depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
+    console.log(a + b + c)
 })
 
 

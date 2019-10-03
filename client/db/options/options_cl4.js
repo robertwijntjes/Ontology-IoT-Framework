@@ -1,4 +1,5 @@
 const recursive = require('../../src/utils/TreeSearch/recursiveSearch')
+const ancestor = require('../../src/utils/single ontology cal/ancestorSearch')
 // Tree Search Calculation
 
 const parent_child = require('../../src/utils/single ontology cal/parent-child')
@@ -23,19 +24,19 @@ const {instrument,size,height} = require('../data/ontology4')
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[distance_center(recursive("liability",instrument)) ],height:height}
+    json: { Client:4 , Response:[ancestor("velcro_component",instrument,[]) ],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_weight(recursive("liability",instrument)) ],height:height}
+    json: { Client:4 , Response:[distance_center(recursive("velcro_component",instrument)) ],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_dist(recursive("liability",instrument)) ],height:height}
+    json: { Client:4 , Response:[tlnd_dist(recursive("instrument",instrument)) ],height:height}
 }
 
 

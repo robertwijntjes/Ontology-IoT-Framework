@@ -1,6 +1,6 @@
 const ont_node = require('../models/node_model')
 const size = 7
-const height = 4
+const height = 'four'
 
 // // Central Node
 const equipment = new ont_node({

@@ -1,6 +1,6 @@
 const ont_node = require('../models/node_model')
 const size = 7
-const height = 3
+const height = 'three'
 
 // // Central Node
 const equipment = new ont_node({
@@ -54,7 +54,7 @@ const heart_monitor = new ont_node({
 
 
 const injection_syringe = new ont_node({
-    nodeName:"injection syringe",
+    nodeName:"injection_syringe",
     relationship:"instance",
     connected_to: [],
     linked_to:["invasive"],

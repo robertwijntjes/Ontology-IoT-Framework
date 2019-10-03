@@ -1,4 +1,5 @@
 const recursive = require('../../src/utils/TreeSearch/recursiveSearch')
+const ancestor = require('../../src/utils/single ontology cal/ancestorSearch')
 // Tree Search Calculation
 
 const parent_child = require('../../src/utils/single ontology cal/parent-child')
@@ -21,19 +22,19 @@ const {tool,size,height} = require('../data/ontology3')
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[distance_center(recursive("cannula",tool)) ],height:height}
+    json: { Client:3 , Response:[ancestor("flu",tool,[]) ],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[tlnd_weight(recursive("cannula",tool)) ],height:height}
+    json: { Client:3 , Response:[distance_center(recursive("flu",tool)) ],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[tlnd_dist(recursive("cannula",tool)) ],height:height}
+    json: { Client:3 , Response:[tlnd_dist(recursive("tool",tool)) ],height:height}
 }
 
 

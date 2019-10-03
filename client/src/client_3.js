@@ -26,13 +26,13 @@ async function RequestLineExecute() {
     });
     // // Second Function Execution
 
-    await rp(option_3)    
-    .then(function (parsedBody) {
-        console.log(parsedBody)
-    })
-    .catch(function (err) {
-        console.log(err)
-    });
+    // await rp(option_3)    
+    // .then(function (parsedBody) {
+    //     console.log(parsedBody)
+    // })
+    // .catch(function (err) {
+    //     console.log(err)
+    // });
     // Third Function Execution
 }
 

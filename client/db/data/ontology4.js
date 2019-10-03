@@ -1,6 +1,6 @@
 const ont_node = require('../models/node_model')
 const size = 8
-const height = 4
+const height = 'four'
 
 // // Central Node
 const instrument = new ont_node({
@@ -45,7 +45,7 @@ const cannula = new ont_node({
 
 
 const blood_pressure_strap = new ont_node({
-    nodeName:"blood pressure strap",
+    nodeName:"blood_pressure_strap",
     relationship:"instance" ,
     connected_to:[],
     linked_to:["non_invasive"],
@@ -53,7 +53,7 @@ const blood_pressure_strap = new ont_node({
     attributes:["vun_id","vun_name","instrument_id","feature"]})
 
 const leather_component = new ont_node({
-    nodeName:"blood pressure strap",
+    nodeName:"leather_component",
     relationship:"component" ,
     connected_to:[],
     linked_to:["blood_pressure_strap"],
@@ -61,7 +61,7 @@ const leather_component = new ont_node({
     attributes:["vun_id","vun_name","instrument_id","feature"]})
 
 const velcro_component= new ont_node({
-    nodeName:"blood pressure strap",
+    nodeName:"velcro_component",
     relationship:"component" ,
     connected_to:[],
     linked_to:["blood_pressure_strap"],

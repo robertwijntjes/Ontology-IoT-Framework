@@ -1,4 +1,5 @@
 const recursive = require('../../src/utils/TreeSearch/recursiveSearch')
+const ancestor = require('../../src/utils/single ontology cal/ancestorSearch')
 // Tree Search Calculation
 
 const parent_child = require('../../src/utils/single ontology cal/parent-child')
@@ -21,19 +22,19 @@ const {equipment,size,height} = require('../data/ontology2')
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_node_density(recursive("weakness",equipment)) ],height:height}
+    json: { Client:2 , Response:[ancestor("equipment",equipment,[])],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_weight(recursive("weakness",equipment),size) ],height:height}
+    json: { Client:2 , Response:[distance_center(recursive("equipment",equipment),size) ],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_dist(recursive("weakness",equipment)) ],height:height}
+    json: { Client:2 , Response:[tlnd_dist(recursive("equipment",equipment)) ],height:height}
 }
 
 module.exports = {

@@ -1,5 +1,5 @@
 const sb = (depth_1,depth_2) => {
-    return ((depth_1 - depth_2)/(depth_1+depth_2))*(-0.1)
+    return ((depth_1 - depth_2)/(depth_1 + depth_2))*-0.1
 }
 
 module.exports = sb

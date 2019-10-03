@@ -24,6 +24,9 @@ const db_sort = (database,req) =>{
     else{
         console.log(chalk.red('@') + chalk.blue('Checking Response Content for Actions'))
         for(x in database){
+            console.log('BEGIN')
+            console.log(database[x])
+            console.log('END')
             if(database[x].Client == req.body.Client){
                 let flip = false
                 for(z in database[x].Response){

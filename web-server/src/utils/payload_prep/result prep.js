@@ -40,38 +40,22 @@ const tlnd_prep = (database,op) =>{
 }
 
 const sdamo_prep = (database,op) =>{
+
     const result = []
     for(z in op){
         for(x in database){
             for(y in database[x].Response){
                 if(database[x].Response[y].type === op[z]){
                     result.push({value:database[x].Response[y].operation,type:op[z]})
-                }
-                
+                }    
             }
         }
     }
 
-    const doh = result.map(function(value) {
-        if(value.type === op[0]){
-            return value
-        }
-    });
+    const doh =  result.filter(x=>x.type == op[0])
+    const scd = result.filter(x=>x.type == op[1])
 
-    const sb = result.map(function(value) {
-        if(value.type === op[1]){
-            return value
-        }
-    });
-
-    const scd = result.map(function(value) {
-        if(value.type === op[2]){
-            return value
-        }
-    });
-
-    console.log({doh:doh,sb:sb,scd:scd})
-    return ({doh:doh,sb:sb,scd:scd})
+    return ({depth_of_heirarchy:doh,semantic_bias:doh,semantic_coincidence_degree:scd})
 
 }
 
