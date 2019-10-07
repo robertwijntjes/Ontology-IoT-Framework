@@ -17,13 +17,13 @@ async function RequestLineExecute() {
     });
     // First funciton execution
 
-    // await rp(option_2)    
-    // .then(function (parsedBody) {
-    //     console.log(parsedBody)
-    // })
-    // .catch(function (err) {
-    //     console.log(err)
-    // });
+    await rp(option_2)    
+    .then(function (parsedBody) {
+        console.log(parsedBody)
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
     // // // Second Function Execution
 
     // await rp(option_3)    

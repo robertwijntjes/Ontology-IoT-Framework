@@ -98,11 +98,12 @@ app.get('/interface/tlnd',(req,res)=>{
 app.get('/interface/sdamo',(req,res)=>{
     const result = sdamo_prep(database,['distance_center','ancestor_search'])
     console.log(result)
-    const a = doh(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value,database[0].height)
+    const a = doh(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
     const b = sb(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
     const c = scd(result.semantic_coincidence_degree[0].value,result.semantic_coincidence_degree[1].value)
-    console.log({depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
-    console.log(a + b + c)
+    const sdamo = a+b+c
+    console.log({sdamo_result:sdamo,depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
+    res.send({sdamo_result:sdamo,depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
 })
 
 

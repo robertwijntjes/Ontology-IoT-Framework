@@ -15,7 +15,13 @@ const db_sort = (database,req) =>{
         database.push(req.body)
         console.log()
     }
-    if(!contains(database,req.body.Client)){
+    var check = false
+    for (x in database){
+        if(req.body.Client == database[x].Client){
+            check = true
+        }
+    }
+    if(!check){
         console.log(chalk.red('@') + chalk.blue('Pushing New Clients Information'))
         console.log(req.body)
         database.push(req.body)
