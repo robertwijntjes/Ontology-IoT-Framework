@@ -2,13 +2,12 @@ const _ = require('lodash')
 var stringSimilarity = require('string-similarity');
 
 const scd = (total_1,total_2) =>{
-    console.log(total_2,total_1)
     if(total_1.length == 1 && total_2.length == 1){
         if(total_1[0] == total_2[0]){
-            return (1/2)*0.4
+            return (1)*0.3
         }
         if(total_1[0] != total_2[0]){
-            return (0/2)*0.4
+            return (0/2)*0.3
         }
         
     }
@@ -26,8 +25,8 @@ const scd = (total_1,total_2) =>{
 
 
     var array3 = _.union(total_1,total_2)
-    // console.log({counter:counter,list:array3})
-    return (counter/(array3.length))*0.4
+    console.log({counter:counter,list:array3})
+    return (counter/(array3.length))*0.3
 }
 
 module.exports = scd

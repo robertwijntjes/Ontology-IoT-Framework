@@ -22,19 +22,19 @@ const {equipment,size,height} = require('../data/ontology1')
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:1 , Response:[ancestor("invasive",equipment,[])],height:height}
+    json: { Client:1 , Response:[ancestor("heart_monitor",equipment,[])],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:1 , Response:[distance_center(recursive("invasive",equipment),size)],height:height}
+    json: { Client:1 , Response:[distance_center(recursive("heart_monitor",equipment),size)],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:1 , Response:[tlnd_dist(recursive("equipment",equipment))],height:height}
+    json: { Client:1 , Response:[tlnd_dist(recursive("heart_monitor",equipment))],height:height}
 }
 
 module.exports = {
