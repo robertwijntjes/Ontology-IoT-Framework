@@ -96,8 +96,8 @@ app.get('/interface/tlnd',(req,res)=>{
     const b = link_weight(result.weight[0].value,result.weight[1].value)
     const c = node_depth(result.dist[0].value,result.dist[1].value)
     const d = type_of_link(result.link[0].value,result.link[1].value)
-    console.log({density:a,link:b,node_depth:c,link:d})
-    res.send({density:a,link:b,node_depth:c,link:d})
+    console.log({density:a,weight:b,node_depth:c,link:d})
+    res.send({density:a,weight:b,node_depth:c,link:d})
 })
 
 app.get('/interface/sdamo',(req,res)=>{

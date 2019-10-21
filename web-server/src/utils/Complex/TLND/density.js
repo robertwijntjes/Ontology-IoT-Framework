@@ -1,5 +1,10 @@
 const density = (density1,density2) =>{
-    console.log({client1:density1,client2:density2})
+    if(density1 > density2){
+        return density2/density1
+    }
+    else{
+        return density1/density2
+    }
 }
 module.exports = density
 
