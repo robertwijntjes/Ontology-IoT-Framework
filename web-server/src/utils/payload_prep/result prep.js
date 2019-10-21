@@ -10,30 +10,11 @@ const tlnd_prep = (database,op) =>{
             }
         }
     }
+    const dist =  result.filter(x=>x.type == op[0])
+    const density =  result.filter(x=>x.type == op[1])
+    const weight =  result.filter(x=>x.type == op[2])
+    const link =  result.filter(x=>x.type == op[3])
 
-    const dist = result.map(function(value) {
-        if(value.type === op[0]){
-            return value
-        }
-    });
-
-    const density = result.map(function(value) {
-        if(value.type === op[1]){
-            return value
-        }
-    });
-
-    const weight = result.map(function(value) {
-        if(value.type === op[2]){
-            return value
-        }
-    });
-
-    const link = result.map(function(value) {
-        if(value.type === op[3]){
-            return value
-        }
-    });
     console.log({dist:dist,density:density,weight:weight,link:link})
     return ({dist:dist,density:density,weight:weight,link:link})
 

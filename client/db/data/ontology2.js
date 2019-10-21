@@ -12,15 +12,15 @@ const equipment = new ont_node({
     attributes:['name','id','description','usedfor','kind','interventional_id','invasive_id','non_invasive_id']})
 
 const injection_syringe = new ont_node({
-    nodeName:"injection syringe",
-    relationship:"SubClassOf",
+    nodeName:"injection_syringe",
+    relationship:"subClassOf",
     connected_to: [],
     linked_to:["equipment"],
     level:2,
     attributes:['name','id','equipment_id','type_id']})
 
 const heart_beat_monitor = new ont_node({
-    nodeName:"heart beat monitor",
+    nodeName:"heart_beat_monitor",
     relationship:"subClassOf", 
     connected_to:[],
     linked_to:["equipment"],
@@ -37,7 +37,7 @@ const weakness = new ont_node({
 
 
 const MCT = new ont_node({
-    nodeName:"mobile cardiac telemetry",
+    nodeName:"mobile_cardiac_telemetry",
     relationship:"instance" ,
     connected_to:[],
     linked_to:["heart_beat_monitor"],

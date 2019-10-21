@@ -9,8 +9,13 @@
     "client3": "node src/client_3.js",
     "client4": "node src/client_4.js",
     "runall": "node src/client_1.js && node src/client_2.js && node src/client_3.js && node src/client_4.js",
-    "c34": "node src/client_3.js && node src/client_4.js",
-    "c12": "node src/client_1.js && node src/client_2.js"
+    "c12": "node src/client_1.js && node src/client_2.js",
+    "c13": "node src/client_1.js && node src/client_3.js",
+    "c14": "node src/client_1.js && node src/client_4.js",
+    "c23": "node src/client_2.js && node src/client_3.js",
+    "c24": "node src/client_2.js && node src/client_4.js",
+    "c34": "node src/client_3.js && node src/client_4.js"
+    
   },
   "author": "",
   "license": "ISC",

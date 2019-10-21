@@ -13,7 +13,7 @@ const tool = new ont_node({
 
 const invasive = new ont_node({
     nodeName:"invasive",
-    relationship:"SubClassOf",
+    relationship:"subClassOf",
     connected_to: [],
     linked_to:["tool"], 
     level:2, attributes:['name','id']})

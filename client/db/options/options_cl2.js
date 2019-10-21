@@ -14,6 +14,7 @@ const {attributes_list,attributes_amount,attributes_array} = require('../../src/
 const tlnd_dist = require('../../src/utils/single ontology cal/tlnd_dist')
 const tlnd_node_density = require('../../src/utils/single ontology cal/tlnd_node_density')
 const tlnd_weight = require('../../src/utils/single ontology cal/tlnd_weight')
+const {link_calculation,ontology_link_cal} = require('../../src/utils/single ontology cal/tlnd_link_cal')
 // tlnd specific Calculation
 
 const {equipment,size,height} = require('../data/ontology2')
@@ -22,23 +23,30 @@ const {equipment,size,height} = require('../data/ontology2')
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[ancestor("plastic_component",equipment,[])],height:height}
+    json: { Client:2 , Response:[tlnd_weight(recursive("equipment",equipment),size)],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[distance_center(recursive("plastic_component",equipment),size) ],height:height}
+    json: { Client:2 , Response:[tlnd_node_density(recursive("equipment",equipment),size)],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_dist(recursive("plastic_component",equipment)) ],height:height}
+    json: { Client:2 , Response:[tlnd_dist(recursive("equipment",equipment)) ],height:height}
+}
+
+const option_4 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:2 , Response:[ontology_link_cal(recursive("equipment",equipment)) ],height:height}
 }
 
 module.exports = {
     option_1,
     option_2,
-    option_3
+    option_3,
+    option_4
 }

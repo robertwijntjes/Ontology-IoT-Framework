@@ -22,8 +22,8 @@ const interventional = new ont_node({
 
 const invasive = new ont_node({
     nodeName:"invasive",
-    relationship:"SubClassOf",
-    connected_to: [],
+    relationship:"subClassOf",
+    connected_to:[],
     linked_to:["equipment"],
     level:2,
     attributes:['name','id','equipment_id','type']})

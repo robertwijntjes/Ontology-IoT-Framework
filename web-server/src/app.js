@@ -92,12 +92,12 @@ app.get('/interface/simcal',(req,res)=>{
 })
 
 app.get('/interface/tlnd',(req,res)=>{
-    res.send(tlnd_prep(database,['tlnd_dist','tlnd_node_density','tlnd_weight','type_of_link']))
+    res.send(tlnd_prep(database,['tlnd_dist','tlnd_node_density','tlnd_weight','tlnd_link_cal']))
 })
 
 app.get('/interface/sdamo',(req,res)=>{
     const result = sdamo_prep(database,['distance_center','ancestor_search'])
-    console.log(result)
+    // console.log(result)
     const a = doh(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
     const b = sb(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
     const c = scd(result.semantic_coincidence_degree[0].value,result.semantic_coincidence_degree[1].value)

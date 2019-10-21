@@ -13,7 +13,7 @@ const instrument = new ont_node({
 
 const needle = new ont_node({
     nodeName:"needle",
-    relationship:"SubClassOf",
+    relationship:"subClassOf",
     connected_to: [],
     linked_to:["instrument"], 
     level:2, 
@@ -29,7 +29,7 @@ const non_invasive = new ont_node({
 
 const liability  = new ont_node({
     nodeName:"liability",
-    relationship:"UsedFor" ,
+    relationship:"subClassOf" ,
     connected_to:[],
     linked_to:["instrument"],
     level:2,

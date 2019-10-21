@@ -4,14 +4,14 @@ const link_types = [
         'value':1.00
     },
     {
-        'type':'SubClassOf',
+        'type':'subClassOf',
         'value':0.65,
     },
     {
         'type':'UsedFor',
         'value':0.75
     },
-{
+    {
         'type':'instance',
         'value':0.50
     },

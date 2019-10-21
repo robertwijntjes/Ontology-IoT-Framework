@@ -14,6 +14,7 @@ const {attributes_list,attributes_amount,attributes_array} = require('../../src/
 const tlnd_dist = require('../../src/utils/single ontology cal/tlnd_dist')
 const tlnd_node_density = require('../../src/utils/single ontology cal/tlnd_node_density')
 const tlnd_weight = require('../../src/utils/single ontology cal/tlnd_weight')
+const {link_calculation,ontology_link_cal} = require('../../src/utils/single ontology cal/tlnd_link_cal')
 // tlnd specific Calculation
 
 const {instrument,size,height} = require('../data/ontology4')
@@ -36,12 +37,19 @@ const option_2 = {
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_dist(recursive("instrument",instrument)) ],height:height}
+    json: { Client:4 , Response:[tlnd_dist(recursive("cannula",instrument)) ],height:height}
+}
+
+const option_4 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:4 , Response:[ontology_link_cal(recursive("plastic_component",equipment)) ],height:height}
 }
 
 
 module.exports = {
     option_1,
     option_2,
-    option_3
+    option_3,
+    option_4
 }

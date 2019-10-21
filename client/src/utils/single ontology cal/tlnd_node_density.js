@@ -1,6 +1,6 @@
 const tlnd_node_density = (ontology,size) =>{
     return {
-        operation: ((ontology.FoundNode.linked_to.length + 1)/size).toFixed(3),
+        operation: ((ontology.FoundNode.linked_to.length + ontology.FoundNode.connected_to.length +1)/(size*2)).toFixed(3),
         type:'tlnd_node_density',
         input:ontology.FoundNode.nodeName}
 }
