@@ -87,12 +87,17 @@ app.post('/interface/data',(req,res)=>{
 })
 
 app.get('/interface/simcal',(req,res)=>{
-    // console.log(database[0].Response[0].operation)
     res.send(simcheck(database[0].Response[0].operation,database[1].Response[1].operation))
 })
 
 app.get('/interface/tlnd',(req,res)=>{
-    res.send(tlnd_prep(database,['tlnd_dist','tlnd_node_density','tlnd_weight','tlnd_link_cal']))
+    const result = tlnd_prep(database,['tlnd_dist','tlnd_node_density','tlnd_weight','tlnd_link_cal'])
+    const a = density(result.density[0].value,result.density[1].value)
+    const b = link_weight(result.weight[0].value,result.weight[1].value)
+    const c = node_depth(result.dist[0].value,result.dist[1].value)
+    const d = type_of_link(result.link[0].value,result.link[1].value)
+    console.log({density:a,link:b,node_depth:c,link:d})
+    res.send({density:a,link:b,node_depth:c,link:d})
 })
 
 app.get('/interface/sdamo',(req,res)=>{
