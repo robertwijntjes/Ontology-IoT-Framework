@@ -17,6 +17,10 @@ const tlnd_weight = require('../../src/utils/single ontology cal/tlnd/tlnd_weigh
 const {link_calculation,ontology_link_cal} = require('../../src/utils/single ontology cal/tlnd/tlnd_link_cal')
 // tlnd specific Calculation
 
+const common_properties = require('../../src/utils/single ontology cal/slo/common_prop')
+const term_name = require('../../src/utils/single ontology cal/slo/term_name')
+// Slo Calculations
+
 const {instrument,size,height} = require('../data/ontology4')
 // Ontology Import
 
@@ -25,31 +29,24 @@ const term = "velcro_component"
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_weight(recursive(term,instrument),size)],height:height}
+    json: { Client:4 , Response:[common_properties(recursive(term,instrument),size)],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_node_density(recursive(term,instrument),size)],height:height}
+    json: { Client:4 , Response:[antonyms_array(recursive(term,instrument),size)],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[tlnd_dist(recursive(term,instrument)) ],height:height}
-}
-
-const option_4 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[ontology_link_cal(recursive(term,instrument)) ],height:height}
+    json: { Client:4 , Response:[ synonyms_array(recursive(term,instrument)) ],height:height}
 }
 
 
 module.exports = {
     option_1,
     option_2,
-    option_3,
-    option_4
+    option_3
 }

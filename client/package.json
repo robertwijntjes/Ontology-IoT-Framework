@@ -15,7 +15,6 @@
     "c23": "node src/client_2.js && node src/client_3.js",
     "c24": "node src/client_2.js && node src/client_4.js",
     "c34": "node src/client_3.js && node src/client_4.js"
-    
   },
   "author": "",
   "license": "ISC",

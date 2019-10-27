@@ -12,7 +12,7 @@ const equipment = new ont_node({
     attributes:['name','id','description','usedfor','kind','interventional_id','invasive_id','non_invasive_id']})
 
 const injection_syringe = new ont_node({
-    nodeName:"injection_syringe",
+    nodeName:"injection syringe",
     relationship:"subClassOf",
     connected_to: [],
     linked_to:["equipment"],
@@ -20,7 +20,7 @@ const injection_syringe = new ont_node({
     attributes:['name','id','equipment_id','type_id']})
 
 const heart_beat_monitor = new ont_node({
-    nodeName:"heart_beat_monitor",
+    nodeName:"heart beat monitor",
     relationship:"subClassOf", 
     connected_to:[],
     linked_to:["equipment"],
@@ -37,7 +37,7 @@ const weakness = new ont_node({
 
 
 const MCT = new ont_node({
-    nodeName:"mobile_cardiac_telemetry",
+    nodeName:"mobile cardiac telemetry",
     relationship:"instance" ,
     connected_to:[],
     linked_to:["heart_beat_monitor"],
@@ -46,7 +46,7 @@ const MCT = new ont_node({
 
 
 const intradermal_syringe = new ont_node({
-    nodeName:"intradermal_syringe",
+    nodeName:"intradermal syringe",
     relationship:"instance" ,
     connected_to:[],
     linked_to:["injection_syringe"],
@@ -54,7 +54,7 @@ const intradermal_syringe = new ont_node({
     attributes:["mct_name","mct_id","date_of_use"]})
 
 const plastic_component = new ont_node({
-    nodeName:"plastic_component",
+    nodeName:"plastic component",
     relationship:"component" ,
     connected_to:[],
     linked_to:["intradermal_syringe"],

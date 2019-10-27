@@ -17,37 +17,35 @@ const tlnd_weight = require('../../src/utils/single ontology cal/tlnd/tlnd_weigh
 const {link_calculation,ontology_link_cal} = require('../../src/utils/single ontology cal/tlnd/tlnd_link_cal')
 // tlnd specific Calculation
 
+const common_properties = require('../../src/utils/single ontology cal/slo/common_prop')
+const term_name = require('../../src/utils/single ontology cal/slo/term_name')
+// Slo Calculations
+
 const {equipment,size,height} = require('../data/ontology2')
 // Ontology Import
-const term = "intradermal_syringe"
+
+const term = "heart beat monitor"
 
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_weight(recursive(term,equipment),size)],height:height}
+    json: { Client:2 , Response:[common_properties(recursive(term,equipment),size)],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_node_density(recursive(term,equipment),size)],height:height}
+    json: { Client:2 , Response:[antonyms_array(recursive(term,equipment),size)],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_dist(recursive(term,equipment)) ],height:height}
-}
-
-const option_4 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[ontology_link_cal(recursive(term,equipment)) ],height:height}
+    json: { Client:2 , Response:[ synonyms_array(recursive(term,equipment)) ],height:height}
 }
 
 module.exports = {
     option_1,
     option_2,
-    option_3,
-    option_4
+    option_3
 }

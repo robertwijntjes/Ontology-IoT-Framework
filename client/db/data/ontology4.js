@@ -45,7 +45,7 @@ const cannula = new ont_node({
 
 
 const blood_pressure_strap = new ont_node({
-    nodeName:"blood_pressure_strap",
+    nodeName:"blood pressure strap",
     relationship:"instance" ,
     connected_to:[],
     linked_to:["non_invasive"],
@@ -53,7 +53,7 @@ const blood_pressure_strap = new ont_node({
     attributes:["vun_id","vun_name","instrument_id","feature"]})
 
 const leather_component = new ont_node({
-    nodeName:"leather_component",
+    nodeName:"leather component",
     relationship:"component" ,
     connected_to:[],
     linked_to:["blood_pressure_strap"],
@@ -61,7 +61,7 @@ const leather_component = new ont_node({
     attributes:["vun_id","vun_name","instrument_id","feature"]})
 
 const velcro_component= new ont_node({
-    nodeName:"velcro_component",
+    nodeName:"velcro component",
     relationship:"component" ,
     connected_to:[],
     linked_to:["blood_pressure_strap"],

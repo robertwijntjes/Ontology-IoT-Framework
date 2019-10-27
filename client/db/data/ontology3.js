@@ -19,7 +19,7 @@ const invasive = new ont_node({
     level:2, attributes:['name','id']})
 
 const heart_monitor = new ont_node({
-    nodeName:"heart_monitor",
+    nodeName:"heart monitor",
     relationship:"subClassOf", 
     connected_to:[],
     linked_to:["tool"],

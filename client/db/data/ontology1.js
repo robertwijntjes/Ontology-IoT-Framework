@@ -45,7 +45,7 @@ const vulnerability = new ont_node({
     attributes:["vulnerability_id","vulnerability_name","equipment_id","feature",'description']})
 
 const heart_monitor = new ont_node({
-    nodeName:"heart_monitor",
+    nodeName:"heart monitor",
     relationship:"instance", 
     connected_to:[],
     linked_to:["non_invasive"],
@@ -54,7 +54,7 @@ const heart_monitor = new ont_node({
 
 
 const injection_syringe = new ont_node({
-    nodeName:"injection_syringe",
+    nodeName:"injection syringe",
     relationship:"instance",
     connected_to: [],
     linked_to:["invasive"],
