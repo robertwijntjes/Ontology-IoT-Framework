@@ -12,37 +12,39 @@ const {attributes_list,attributes_amount,attributes_array} = require('../../src/
 
 // TypeOf Calculations
 
-const tlnd_dist = require('../../src/utils/single ontology cal/tlnd_dist')
-const tlnd_node_density = require('../../src/utils/single ontology cal/tlnd_node_density')
-const tlnd_weight = require('../../src/utils/single ontology cal/tlnd_weight')
-const {link_calculation,ontology_link_cal} = require('../../src/utils/single ontology cal/tlnd_link_cal')
+const tlnd_dist = require('../../src/utils/single ontology cal/tlnd/tlnd_dist')
+const tlnd_node_density = require('../../src/utils/single ontology cal/tlnd/tlnd_node_density')
+const tlnd_weight = require('../../src/utils/single ontology cal/tlnd/tlnd_weight')
+const {link_calculation,ontology_link_cal} = require('../../src/utils/single ontology cal/tlnd/tlnd_link_cal')
 // tlnd specific Calculation
 
 const {tool,size,height} = require('../data/ontology3')
 // Ontology Import
 
+const term = "flu"
+
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[ancestor("flu",tool,[]) ],height:height}
+    json: { Client:3 , Response:[tlnd_weight(recursive(term,tool),size)],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[distance_center(recursive("flu",tool)) ],height:height}
+    json: { Client:3 , Response:[tlnd_node_density(recursive(term,tool),size)],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[tlnd_dist(recursive("flu",tool)) ],height:height}
+    json: { Client:3 , Response:[tlnd_dist(recursive(term,tool)) ],height:height}
 }
 
 const option_4 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[ontology_link_cal(recursive("plastic_component",equipment)) ],height:height}
+    json: { Client:3 , Response:[ontology_link_cal(recursive(term,tool)) ],height:height}
 }
 
 module.exports = {

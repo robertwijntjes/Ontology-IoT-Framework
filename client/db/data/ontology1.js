@@ -13,7 +13,7 @@ const equipment = new ont_node({
 
 const interventional = new ont_node({
     nodeName:"interventional",
-    relationship:"SubClassOf",
+    relationship:"subClassOf",
     connected_to: [],
     linked_to:["equipment"],
     level:2,

@@ -11,37 +11,38 @@ const {synonyms_list,synonyms_amount,synonyms_array} = require('../../src/utils/
 const {attributes_list,attributes_amount,attributes_array} = require('../../src/utils/single ontology cal/attributes')
 // TypeOf Calculations
 
-const tlnd_dist = require('../../src/utils/single ontology cal/tlnd_dist')
-const tlnd_node_density = require('../../src/utils/single ontology cal/tlnd_node_density')
-const tlnd_weight = require('../../src/utils/single ontology cal/tlnd_weight')
-const {link_calculation,ontology_link_cal} = require('../../src/utils/single ontology cal/tlnd_link_cal')
+const tlnd_dist = require('../../src/utils/single ontology cal/tlnd/tlnd_dist')
+const tlnd_node_density = require('../../src/utils/single ontology cal/tlnd/tlnd_node_density')
+const tlnd_weight = require('../../src/utils/single ontology cal/tlnd/tlnd_weight')
+const {link_calculation,ontology_link_cal} = require('../../src/utils/single ontology cal/tlnd/tlnd_link_cal')
 // tlnd specific Calculation
 
 const {equipment,size,height} = require('../data/ontology2')
 // Ontology Import
+const term = "intradermal_syringe"
 
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_weight(recursive("equipment",equipment),size)],height:height}
+    json: { Client:2 , Response:[tlnd_weight(recursive(term,equipment),size)],height:height}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_node_density(recursive("equipment",equipment),size)],height:height}
+    json: { Client:2 , Response:[tlnd_node_density(recursive(term,equipment),size)],height:height}
 }
 
 const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[tlnd_dist(recursive("equipment",equipment)) ],height:height}
+    json: { Client:2 , Response:[tlnd_dist(recursive(term,equipment)) ],height:height}
 }
 
 const option_4 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[ontology_link_cal(recursive("equipment",equipment)) ],height:height}
+    json: { Client:2 , Response:[ontology_link_cal(recursive(term,equipment)) ],height:height}
 }
 
 module.exports = {
