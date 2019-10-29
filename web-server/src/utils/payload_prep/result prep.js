@@ -42,9 +42,34 @@ const sdamo_prep = (database,op) =>{
 
 
 
+const slo_prep = (database,op) =>{
+
+    const result = []
+    for(z in op){
+        for(x in database){
+            for(y in database[x].Response){
+                if(database[x].Response[y].type === op[z]){
+                    result.push({value:database[x].Response[y].operation,type:op[z]})
+                }    
+            }
+        }
+    }
+
+    const common_prop =  result.filter(x=>x.type == op[0])
+    const ancestor_search = result.filter(x=>x.type == op[3])
+    const nodename = result.filter(x=>x.type == op[4])
+    const antonyms = result.filter(x=>x.type == op[1])
+    const synonyms_array = result.filter(x=>x.type == op[2])
+
+    return ({common_prop,antonyms,synonyms_array,ancestor_search,nodename})
+
+}
+
+
 module.exports = {
     tlnd_prep,
-    sdamo_prep
+    sdamo_prep,
+    slo_prep
 }
 
 /*

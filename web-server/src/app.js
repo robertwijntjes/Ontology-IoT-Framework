@@ -22,7 +22,15 @@ const node_depth = require('./utils/Complex/TLND/node_depth')
 const type_of_link = require('./utils/Complex/TLND/type_of_link')
 // TLND Algorithm
 
-const {tlnd_prep,sdamo_prep} = require('./utils/payload_prep/result prep')
+
+const ancestor_sim = require('./utils/Complex/slo/ancestor_sim')
+const ant = require('./utils/Complex/slo/ant')
+const common_prop = require('./utils/Complex/slo/common_prop')
+const syn = require('./utils/Complex/slo/synonym_array')
+const term = require('./utils/Complex/slo/term_name')
+// SLO Algorithm
+
+const {tlnd_prep,sdamo_prep,slo_prep} = require('./utils/payload_prep/result prep')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -103,7 +111,7 @@ app.get('/interface/tlnd',(req,res)=>{
 
 app.get('/interface/sdamo',(req,res)=>{
     const result = sdamo_prep(database,['distance_center','ancestor_search'])
-    // console.log(result)
+
     const a = doh(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
     const b = sb(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
     const c = scd(result.semantic_coincidence_degree[0].value,result.semantic_coincidence_degree[1].value)
@@ -111,6 +119,20 @@ app.get('/interface/sdamo',(req,res)=>{
     console.log({sdamo_result:sdamo,depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
     res.send({sdamo_result:sdamo,depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
 })
+
+app.get('/interface/slo',(req,res)=>{
+    const result = slo_prep(database,['common_prop','antonyms_array','synonyms_array','ancestor_search','nodename'])
+    const common_properties = common_prop(result.common_prop[0].value,result.common_prop[1].value)
+    const antonyms = ant(result.antonyms[0].value,result.antonyms[1].value)
+    const synonyms = syn(result.synonyms_array[0].value,result.synonyms_array[1].value)
+    const ancestor = ancestor_sim(result.ancestor_search[0].value,result.ancestor_search[1].value)
+    const nodesname = term(result.nodename[0].value,result.nodename[1].value)
+
+    const slo = common_properties + antonyms + synonyms + ancestor + nodesname
+    res.send({SLO:slo,common_properties,antonyms,synonyms,ancestor,nodesname})
+    console.log({SLO:slo,common_properties,antonyms,synonyms,ancestor,nodesname})
+})
+
 
 
 app.get('/help', (req, res) => {

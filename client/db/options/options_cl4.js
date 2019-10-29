@@ -19,12 +19,13 @@ const {link_calculation,ontology_link_cal} = require('../../src/utils/single ont
 
 const common_properties = require('../../src/utils/single ontology cal/slo/common_prop')
 const term_name = require('../../src/utils/single ontology cal/slo/term_name')
+const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
 const {instrument,size,height} = require('../data/ontology4')
 // Ontology Import
 
-const term = "velcro_component"
+const term = "velcro component"
 
 const option_1 = {
     method:'POST',
@@ -44,9 +45,24 @@ const option_3 = {
     json: { Client:4 , Response:[ synonyms_array(recursive(term,instrument)) ],height:height}
 }
 
+const option_4 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:4 , Response:[ ancestor(term,instrument,[]) ],height:height}
+}
+
+
+const option_5 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:4 , Response:[ node_name(recursive(term,instrument)) ],height:height}
+}
+
 
 module.exports = {
     option_1,
     option_2,
-    option_3
+    option_3,
+    option_4,
+    option_5
 }

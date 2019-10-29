@@ -20,6 +20,7 @@ const {link_calculation,ontology_link_cal} = require('../../src/utils/single ont
 
 const common_properties = require('../../src/utils/single ontology cal/slo/common_prop')
 const term_name = require('../../src/utils/single ontology cal/slo/term_name')
+const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
 const {equipment,size,height} = require('../data/ontology1')
@@ -45,8 +46,22 @@ const option_3 = {
     json: { Client:1 , Response:[ synonyms_array(recursive(term,equipment)) ],height:height}
 }
 
+const option_4 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:1 , Response:[ ancestor(term,equipment,[]) ],height:height}
+}
+
+const option_5 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:1 , Response:[ node_name(recursive(term,equipment)) ],height:height}
+}
+
 module.exports = {
     option_1,
     option_2,
-    option_3
+    option_3,
+    option_4,
+    option_5
 }
