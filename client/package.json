@@ -29,6 +29,7 @@
     "request-promise": "^4.2.4",
     "thesaurus-com": "^1.2.3",
     "underscore": "^1.9.1",
+    "wordnet": "^0.1.2",
     "wordnet-db": "^3.1.11"
   },
   "devDependencies": {

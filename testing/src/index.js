@@ -1,23 +1,51 @@
-// const search = require('./utils/recursiveSearch')
-// const sim = require('./utils/SimCheck')
-// const ontology_1 = require('../data/ontology1')
-// const synonyms = require('./utils/synonyms')
+const levenshtein = require('fast-levenshtein')
 
-// const result = synonyms(search("equipment",ontology_1))
-// console.log(result)
+a = ['instrument',
+'invasive equipment',
+'non Invasive equipment',
+'heart monitor',
+'blood pressure strap',
+'heart beat monitor',
+'mobile cardiac telemetry',
+'cannula',
+'injection syringe',
+'intradermal syringe',
+'needle',
+'susceptibility',
+'flu',
+'weakness',
+'interventional',
+'vulnerability',
+'leather component',
+'velcro component',
+'plastic component']
 
-const database = 
-[ { Client: 1, Response: { Syn_arr: ['a','b','c'] } },
-  { Client: 2, Response: { Syn_arr: ['1','2','3'] } } ]
+b = ['instrument',
+'invasive equipment',
+'non Invasive equipment',
+'heart monitor',
+'blood pressure strap',
+'heart beat monitor',
+'mobile cardiac telemetry',
+'cannula',
+'injection syringe',
+'intradermal syringe',
+'needle',
+'susceptibility',
+'flu',
+'weakness',
+'interventional',
+'vulnerability',
+'leather component',
+'velcro component',
+'plastic component']
 
-function _isContains(json, value) {
-    let contains = false;
-    Object.keys(json).some(key => {
-        contains = typeof json[key] === 'object' ? _isContains(json[key], value) : json[key] === value;
-         return contains;
-    });
-    return contains;
- }
+c = []
 
- console.log(_isContains(database,'Syn_arr'))
+for(x in a){
+    for(z in b){
+        c.push({a:a[x],b:b[z],result:levenshtein.get(a[x],b[z])})
+    }
+}
 
+console.log(c)

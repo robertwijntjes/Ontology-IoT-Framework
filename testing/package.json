@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fast-levenshtein": "^2.0.6",
     "json-find": "^2.0.7",
     "mongoose": "^5.7.0",
     "n3": "^1.2.0",
