@@ -56,12 +56,12 @@ const slo_prep = (database,op) =>{
     }
 
     const common_prop =  result.filter(x=>x.type == op[0])
-    const ancestor_search = result.filter(x=>x.type == op[3])
-    const nodename = result.filter(x=>x.type == op[4])
-    const antonyms = result.filter(x=>x.type == op[1])
-    const synonyms_array = result.filter(x=>x.type == op[2])
+    const synonyms_array = result.filter(x=>x.type == op[1])
+    const ancestor_search = result.filter(x=>x.type == op[2])
+    const nodename = result.filter(x=>x.type == op[3])
 
-    return ({common_prop,antonyms,synonyms_array,ancestor_search,nodename})
+
+    return ({common_prop,synonyms_array,ancestor_search,nodename})
 
 }
 

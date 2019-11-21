@@ -35,26 +35,21 @@ const option_1 = {
     json: { Client:3 , Response:[common_properties(recursive(term,tool),size)],height:height}
 }
 
-const option_2 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[antonyms_array(recursive(term,tool),size)],height:height}
-}
 
-const option_3 = {
+const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
     json: { Client:3 , Response:[ synonyms_array(recursive(term,tool)) ],height:height}
 }
 
-const option_4 = {
+const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
     json: { Client:3 , Response:[ ancestor(term,tool,[]) ],height:height}
 }
 
 
-const option_5 = {
+const option_4 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
     json: { Client:3 , Response:[ node_name(recursive(term,tool)) ],height:height}
@@ -64,6 +59,5 @@ module.exports = {
     option_1,
     option_2,
     option_3,
-    option_4,
-    option_5
+    option_4
 }

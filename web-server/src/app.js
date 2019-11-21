@@ -121,16 +121,15 @@ app.get('/interface/sdamo',(req,res)=>{
 })
 
 app.get('/interface/slo',(req,res)=>{
-    const result = slo_prep(database,['common_prop','antonyms_array','synonyms_array','ancestor_search','nodename'])
+    const result = slo_prep(database,['common_prop','synonyms_array','ancestor_search','nodename'])
     const common_properties = common_prop(result.common_prop[0].value,result.common_prop[1].value)
-    const antonyms = ant(result.antonyms[0].value,result.antonyms[1].value)
     const synonyms = syn(result.synonyms_array[0].value,result.synonyms_array[1].value)
     const ancestor = ancestor_sim(result.ancestor_search[0].value,result.ancestor_search[1].value)
     const nodesname = term(result.nodename[0].value,result.nodename[1].value)
 
-    const slo = common_properties + antonyms + synonyms + ancestor + nodesname
-    res.send({SLO:slo,common_properties,antonyms,synonyms,ancestor,nodesname})
-    console.log({SLO:slo,common_properties,antonyms,synonyms,ancestor,nodesname})
+    const slo = common_properties + synonyms + ancestor + nodesname
+    res.send({SLO:slo,common_properties,synonyms,ancestor,nodesname})
+    console.log({SLO:slo,common_properties,synonyms,ancestor,nodesname})
 })
 
 

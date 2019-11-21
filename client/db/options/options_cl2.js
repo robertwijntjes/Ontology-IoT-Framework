@@ -25,7 +25,7 @@ const node_name = require('../../src/utils/single ontology cal/term_name_get')
 const {equipment,size,height} = require('../data/ontology2')
 // Ontology Import
 
-const term = "equipment"
+const term = "intradermal syringe"
 
 const option_1 = {
     method:'POST',
@@ -33,26 +33,21 @@ const option_1 = {
     json: { Client:2 , Response:[common_properties(recursive(term,equipment),size)],height:height}
 }
 
-const option_2 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[antonyms_array(recursive(term,equipment),size)],height:height}
-}
 
-const option_3 = {
+const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
     json: { Client:2 , Response:[ synonyms_array(recursive(term,equipment)) ],height:height}
 }
 
-const option_4 = {
+const option_3 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
     json: { Client:2 , Response:[ ancestor(term,equipment,[]) ],height:height}
 }
 
 
-const option_5 = {
+const option_4 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
     json: { Client:2 , Response:[ node_name(recursive(term,equipment)) ],height:height}
@@ -62,6 +57,5 @@ module.exports = {
     option_1,
     option_2,
     option_3,
-    option_4,
-    option_5
+    option_4
 }

@@ -2,7 +2,7 @@ const request = require('request')
 const rp = require('request-promise')
 // Packages
 
-const {option_1,option_2,option_3,option_4,option_5} = require('../db/options/options_cl4')
+const {option_1,option_2,option_3,option_4 } = require('../db/options/options_cl4')
 // System options
 
 async function RequestLineExecute() {
@@ -44,14 +44,6 @@ async function RequestLineExecute() {
         console.log(err)
     });
     // Fourth Function Execution
-
-    await rp(option_5)    
-    .then(function (parsedBody) {
-        console.log(parsedBody)
-    })
-    .catch(function (err) {
-        console.log(err)
-    });
 }
 
 RequestLineExecute()
