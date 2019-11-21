@@ -1,6 +1,7 @@
 const ont_node = require('../models/node_model')
 const size = 8
 const height = 'four'
+const connections = 7
 
 // // Central Node
 const instrument = new ont_node({

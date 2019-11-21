@@ -1,5 +1,4 @@
-const ancDest = () =>{
-    const ancestorSearch = (term,currentNode,tree) =>{
+const ancDest = (term,currentNode,tree) =>{
         if(currentNode.nodeName == term){
             tree.push(currentNode.nodeName)
             return {operation:tree,type:'ancestor_search',input:term}
@@ -13,7 +12,7 @@ const ancDest = () =>{
             var temp
             for(i = 0 ; i < currentNode.connected_to.length ; i++){
                 if(i==0){
-                    tree.push(currentNode.nodeName)
+                    tree.push()
                 }
                 temp = ancestorSearch(term,currentNode.connected_to[i],tree)
                 if(temp != null){
@@ -22,7 +21,6 @@ const ancDest = () =>{
             }
             return null
         }
-    }
     
     module.exports = ancDest
 }
