@@ -1,7 +1,12 @@
 const ont_node = require('../models/node_model')
 const size = 7
 const height = 'four'
-const connections = 6
+const connections = {
+    connects:6,
+    max:3,
+    min:1,
+    density: 0.52
+}
 
 // // Central Node
 const equipment = new ont_node({
@@ -10,6 +15,7 @@ const equipment = new ont_node({
     connected_to:[],
     linked_to:[], 
     level:1,
+    connections:3,
     attributes:['name','id','description','usedfor','kind','interventional_id','invasive_id','non_invasive_id']})
 
 const injection_syringe = new ont_node({
@@ -18,6 +24,7 @@ const injection_syringe = new ont_node({
     connected_to: [],
     linked_to:["equipment"],
     level:2,
+    connections:3,
     attributes:['name','id','equipment_id','type_id']})
 
 const heart_beat_monitor = new ont_node({
@@ -26,6 +33,7 @@ const heart_beat_monitor = new ont_node({
     connected_to:[],
     linked_to:["equipment"],
     level:2,
+    connections:2,
     attributes:['name','id','description','type_id']})
 
 const weakness = new ont_node({
@@ -34,6 +42,7 @@ const weakness = new ont_node({
     connected_to:[],
     linked_to:["equipment"], 
     level:2,
+    connections:1,
     attributes:["weak_id","weak_name","equip_id","feature"]})
 
 
@@ -43,6 +52,7 @@ const MCT = new ont_node({
     connected_to:[],
     linked_to:["heart_beat_monitor"],
     level:3,
+    connections:1,
     attributes:["mct_name","mct_id","date_of_use"]})
 
 
@@ -52,6 +62,7 @@ const intradermal_syringe = new ont_node({
     connected_to:[],
     linked_to:["injection_syringe"],
     level:3,
+    connections:2,
     attributes:["mct_name","mct_id","date_of_use"]})
 
 const plastic_component = new ont_node({
@@ -60,6 +71,7 @@ const plastic_component = new ont_node({
     connected_to:[],
     linked_to:["intradermal_syringe"],
     level:4,
+    connections:1,
     attributes:["component_item_id","component_item_name"]
 })
 
@@ -71,5 +83,6 @@ intradermal_syringe.connected_to = [plastic_component]
 module.exports = {
     equipment,
     size,
-    height
+    height,
+    connections
 }

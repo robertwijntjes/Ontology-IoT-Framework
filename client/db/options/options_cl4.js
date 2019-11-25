@@ -22,7 +22,11 @@ const term_name = require('../../src/utils/single ontology cal/slo/term_name')
 const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
-const {instrument,size,height} = require('../data/ontology4')
+const {single_density,list_density} = require('../../src/utils/single ontology cal/hybrid/density')
+const ancestorDense = require('../../src/utils/single ontology cal/hybrid/ancestorDensity')
+// hybrid calculations
+
+const {instrument,size,height,connections} = require('../data/ontology4')
 // Ontology Import
 
 const term = "velcro component"
@@ -30,26 +34,7 @@ const term = "velcro component"
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[common_properties(recursive(term,instrument),size)],height:height}
-}
-
-const option_2 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[ synonyms_array(recursive(term,instrument)) ],height:height}
-}
-
-const option_3 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[ ancestor(term,instrument,[]) ],height:height}
-}
-
-
-const option_4 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[ node_name(recursive(term,instrument)) ],height:height}
+    json: { Client:4 , Response:[ancestorDense(term,instrument,[])],height:height}
 }
 
 

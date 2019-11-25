@@ -1,6 +1,4 @@
-const {single_density,list_density} = require('./density')
-
-const ancDest = (term,currentNode,tree,connections) =>{
+const fullgraphcal = (currentNode,tree,connections) =>{
     if(currentNode.nodeName == term){
         tree.push(single_density(currentNode.connections,connections))
         return {operation:tree,type:'ancDest',input:term}
@@ -16,7 +14,7 @@ const ancDest = (term,currentNode,tree,connections) =>{
             if(i==0){
                 tree.push(single_density(currentNode.connections,connections))
             }
-            temp = ancDest(term,currentNode.connected_to[i],tree,connections)
+            temp = fullgraphcal(term,currentNode.connected_to[i],tree,connections)
             if(temp != null){
                 return temp
             }
@@ -25,5 +23,4 @@ const ancDest = (term,currentNode,tree,connections) =>{
     }
 }
 
-
-module.exports = ancDest
+module.exports = fullgraphcal

@@ -1,7 +1,12 @@
 const ont_node = require('../models/node_model')
 const size = 7
 const height = 'three'
-const connections = 6
+const connections = {
+    connects:6,
+    max:4,
+    min:1,
+    density: 0.31
+}
 
 // // Central Node
 const equipment = new ont_node({
@@ -10,6 +15,7 @@ const equipment = new ont_node({
     connected_to:[],
     linked_to:[],
     level:1,
+    connections:4,
     attributes:['name','id','description','usedfor','kind','interventional_id','invasive_id','non_invasive_id']})
 
 const interventional = new ont_node({
@@ -18,6 +24,7 @@ const interventional = new ont_node({
     connected_to: [],
     linked_to:["equipment"],
     level:2,
+    connections:1,
     attributes:['name','id','equipment_id','type']
 })
 
@@ -27,6 +34,7 @@ const invasive = new ont_node({
     connected_to:[],
     linked_to:["equipment"],
     level:2,
+    connections:2,
     attributes:['name','id','equipment_id','type']})
 
 const non_invasive = new ont_node({
@@ -35,6 +43,7 @@ const non_invasive = new ont_node({
     connected_to:[],
     linked_to:["equipment"],
     level:2,
+    connections:2,
     attributes:['name','id','equipment_id','type']})
     
 const vulnerability = new ont_node({
@@ -43,6 +52,7 @@ const vulnerability = new ont_node({
     connected_to:[],
     linked_to:["equipment"],
     level:2,
+    connections:1,
     attributes:["vulnerability_id","vulnerability_name","equipment_id","feature",'description']})
 
 const heart_monitor = new ont_node({
@@ -51,6 +61,7 @@ const heart_monitor = new ont_node({
     connected_to:[],
     linked_to:["non_invasive"],
     level:3, 
+    connections:1,
     attributes:['name','id','description']})
 
 
@@ -60,6 +71,7 @@ const injection_syringe = new ont_node({
     connected_to: [],
     linked_to:["invasive"],
     level:3,
+    connections:1,
     attributes:['name','id','description']})
 
 
@@ -70,5 +82,6 @@ non_invasive.connected_to = [heart_monitor]
 module.exports = {
     equipment,
     size,
-    height
+    height,
+    connections
 }

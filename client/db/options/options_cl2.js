@@ -22,8 +22,14 @@ const term_name = require('../../src/utils/single ontology cal/slo/term_name')
 const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
-const {equipment,size,height} = require('../data/ontology2')
+const {single_density,list_density} = require('../../src/utils/single ontology cal/hybrid/density')
+const ancestorDense = require('../../src/utils/single ontology cal/hybrid/ancestorDensity')
+// hybrid calculations
+
+const {equipment,size,height,connections} = require('../data/ontology2')
 // Ontology Import
+
+
 
 const term = "intradermal syringe"
 
