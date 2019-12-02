@@ -66,10 +66,33 @@ const slo_prep = (database,op) =>{
 }
 
 
+const hyb_prep = (database,op) =>{
+
+    const result = []
+    for(z in op){
+        for(x in database){
+            for(y in database[x].Response){
+                if(database[x].Response[y].type === op[z]){
+                    result.push({value:database[x].Response[y].operation,type:op[z]})
+                }    
+            }
+        }
+    }
+
+    const distance_center =  result.filter(x=>x.type == op[0])
+    const ancestor_density = result.filter(x=>x.type == op[1])
+
+    console.log(distance_center,ancestor_density)
+    return ({distance_center,ancestor_density})
+
+}
+
+
 module.exports = {
     tlnd_prep,
     sdamo_prep,
-    slo_prep
+    slo_prep,
+    hyb_prep
 }
 
 /*

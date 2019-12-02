@@ -30,7 +30,13 @@ const syn = require('./utils/Complex/slo/synonym_array')
 const term = require('./utils/Complex/slo/term_name')
 // SLO Algorithm
 
-const {tlnd_prep,sdamo_prep,slo_prep} = require('./utils/payload_prep/result prep')
+
+const hyb_dist = require('./utils/Complex/hybrid/hyb_distance')
+const hyb_dense = require('./utils/Complex/hybrid/hyb_density')
+const hyb_dense_dist = require('./utils/Complex/hybrid/hyb_dense_dist')
+// hybrid Algorithm
+
+const {tlnd_prep,sdamo_prep,slo_prep,hyb_prep} = require('./utils/payload_prep/result prep')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -89,7 +95,6 @@ app.post('/interface/data',(req,res)=>{
     const result = simCal(req.body)
     const size = req.get("content-length")
     const rf_db = db_sort(database,req)
-    
     res.send({status:result,datasize:size,data:rf_db})
 
 })
@@ -130,6 +135,15 @@ app.get('/interface/slo',(req,res)=>{
     const slo = common_properties + synonyms + ancestor + nodesname
     res.send({SLO:slo,common_properties,synonyms,ancestor,nodesname})
     console.log({SLO:slo,common_properties,synonyms,ancestor,nodesname})
+})
+
+app.get('/interface/hyb',(req,res)=>{
+    const result = hyb_prep(database,['distance_center','ancDest'])
+    const dist = hyb_dist(result.distance_center[0].value,result.distance_center[1].value,database[0].height,database[1].height)
+    const dense = hyb_dense(result.ancestor_density[0].value,result.ancestor_density[1].value,database[0].density,database[1].density)
+    // const dense_dist = hyb_dense_dist()
+
+    res.send({dist,dense})
 })
 
 

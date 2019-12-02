@@ -23,7 +23,7 @@ const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
 const {single_density,list_density} = require('../../src/utils/single ontology cal/hybrid/density')
-const ancestorDense = require('../../src/utils/single ontology cal/hybrid/ancestorDensity')
+const ancDest = require('../../src/utils/single ontology cal/hybrid/ancestorDensity')
 // hybrid calculations
 
 const {equipment,size,height,connections} = require('../data/ontology2')
@@ -31,37 +31,21 @@ const {equipment,size,height,connections} = require('../data/ontology2')
 
 
 
-const term = "intradermal syringe"
+const term = "plastic component"
 
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[common_properties(recursive(term,equipment),size)],height:height}
+    json: { Client:2 , Response:[ancDest(term,equipment,[],connections) ],density:connections.density,height:height}
 }
-
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[ synonyms_array(recursive(term,equipment)) ],height:height}
-}
-
-const option_3 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[ ancestor(term,equipment,[]) ],height:height}
-}
-
-
-const option_4 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[ node_name(recursive(term,equipment)) ],height:height}
+    json: { Client:2 , Response:[distance_center(recursive(term,equipment)) ],density:connections.density,height:height}
 }
 
 module.exports = {
     option_1,
-    option_2,
-    option_3,
-    option_4
+    option_2
 }

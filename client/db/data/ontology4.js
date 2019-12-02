@@ -1,11 +1,12 @@
 const ont_node = require('../models/node_model')
 const size = 8
-const height = 'four'
+const height = 4
 const connections = {
     connects:7,
     max:3,
     min:1,
-    density: 0.246
+    density: 0.246,
+    total_density:0
 }
 
 // // Central Node
