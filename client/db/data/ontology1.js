@@ -5,9 +5,11 @@ const connections = {
     connects:6,
     max:4,
     min:1,
-    density: 0.31,
-    total_density:0
+    density: 0.29,
+    total_density:2.02
 }
+
+// density = total density / total nodes            => gives each nodes connection density within graph
 
 // // Central Node
 const equipment = new ont_node({

@@ -34,6 +34,9 @@ const term = require('./utils/Complex/slo/term_name')
 const hyb_dist = require('./utils/Complex/hybrid/hyb_distance')
 const hyb_dense = require('./utils/Complex/hybrid/hyb_density')
 const hyb_dense_dist = require('./utils/Complex/hybrid/hyb_dense_dist')
+const hyb_dist_jia = require('./utils/Complex/hybrid/hyp_dist_jia')
+
+const non_bias_cal = require('./utils/Complex/hybrid/final_cal')
 // hybrid Algorithm
 
 const {tlnd_prep,sdamo_prep,slo_prep,hyb_prep} = require('./utils/payload_prep/result prep')
@@ -139,11 +142,15 @@ app.get('/interface/slo',(req,res)=>{
 
 app.get('/interface/hyb',(req,res)=>{
     const result = hyb_prep(database,['distance_center','ancDest'])
-    const dist = hyb_dist(result.distance_center[0].value,result.distance_center[1].value,database[0].height,database[1].height)
-    const dense = hyb_dense(result.ancestor_density[0].value,result.ancestor_density[1].value,database[0].density,database[1].density)
-    // const dense_dist = hyb_dense_dist()
 
-    res.send({dist,dense})
+    const distance = hyb_dist(result.distance_center[0].value,result.distance_center[1].value,database[0].height,database[1].height)
+    const density = hyb_dense(result.ancestor_density[0].value,result.ancestor_density[1].value,database[0].density,database[1].density)
+    const density_dist = hyb_dense_dist(result.ancestor_density[0].value,result.ancestor_density[1].value,database[0].total_density,database[1].total_density)
+    const distance_jia = hyb_dist_jia(result.distance_center[0].value,result.distance_center[1].value,database[0].height,database[1].height)
+
+
+    const final_result = non_bias_cal(distance,density,density_dist,distance_jia)
+    res.send({distance,distance_jia,density,density_dist})
 })
 
 

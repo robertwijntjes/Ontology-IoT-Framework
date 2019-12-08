@@ -35,13 +35,13 @@ const term = "equipment"
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:1 , Response:[ancDest(term,equipment,[],connections) ],density:connections.density,height:height}
+    json: { Client:1 , Response:[ancDest(term,equipment,[],connections) ],density:connections.density,height:height,total_density:connections.total_density}
 }
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:1 , Response:[distance_center(recursive(term,equipment)) ],density:connections.density,height:height}
+    json: { Client:1 , Response:[distance_center(recursive(term,equipment)) ],density:connections.density,height:height,total_density:connections.total_density}
 }
 
 

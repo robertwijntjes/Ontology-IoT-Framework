@@ -5,8 +5,8 @@ const connections = {
     connects:5,
     max:3,
     min:1,
-    density:0.31,
-    total_density:0
+    density:0.343,
+    total_density:2.00
 }
 
 // // Central Node
