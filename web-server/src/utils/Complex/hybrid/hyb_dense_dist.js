@@ -3,7 +3,7 @@ const dense_dist = (list1,list2,density1,density2) => {
     const b = list2.reduce((a,b) => a + b, 0)*(1/list2.length)
 
 
-    return (((a+b)/(density1+density2))-.23)/(0.29-0.23)
+    return (a+b)/(density1+density2)
 }
 
 module.exports = dense_dist

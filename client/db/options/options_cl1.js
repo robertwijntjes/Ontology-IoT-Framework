@@ -30,7 +30,7 @@ const ancDest = require('../../src/utils/single ontology cal/hybrid/ancestorDens
 const {equipment,size,height,connections} = require('../data/ontology1')
 // Ontology Import
 
-const term = "equipment"
+const term = "invasive"
 
 const option_1 = {
     method:'POST',

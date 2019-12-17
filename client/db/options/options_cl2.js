@@ -31,7 +31,7 @@ const {equipment,size,height,connections} = require('../data/ontology2')
 
 
 
-const term = "plastic component"
+const term = "equipment"
 
 const option_1 = {
     method:'POST',

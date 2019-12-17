@@ -82,7 +82,6 @@ const hyb_prep = (database,op) =>{
     const distance_center =  result.filter(x=>x.type == op[0])
     const ancestor_density = result.filter(x=>x.type == op[1])
 
-    console.log(distance_center,ancestor_density)
     return ({distance_center,ancestor_density})
 
 }

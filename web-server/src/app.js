@@ -113,7 +113,8 @@ app.get('/interface/tlnd',(req,res)=>{
     const c = node_depth(result.dist[0].value,result.dist[1].value)
     const d = type_of_link(result.link[0].value,result.link[1].value)
     const tlnd = a + b + c + d
-    console.log({tlnd_result:tlnd,density:a,weight:b,node_depth:c,link:d})
+
+
     res.send({tlnd_result:tlnd,density:a,weight:b,node_depth:c,link:d})
 })
 
@@ -124,7 +125,8 @@ app.get('/interface/sdamo',(req,res)=>{
     const b = sb(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
     const c = scd(result.semantic_coincidence_degree[0].value,result.semantic_coincidence_degree[1].value)
     const sdamo = a+b+c
-    console.log({sdamo_result:sdamo,depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
+
+
     res.send({sdamo_result:sdamo,depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
 })
 
@@ -137,7 +139,6 @@ app.get('/interface/slo',(req,res)=>{
 
     const slo = common_properties + synonyms + ancestor + nodesname
     res.send({SLO:slo,common_properties,synonyms,ancestor,nodesname})
-    console.log({SLO:slo,common_properties,synonyms,ancestor,nodesname})
 })
 
 app.get('/interface/hyb',(req,res)=>{
@@ -150,7 +151,15 @@ app.get('/interface/hyb',(req,res)=>{
 
 
     const final_result = non_bias_cal(distance,density,density_dist,distance_jia)
-    res.send({distance,distance_jia,density,density_dist})
+    
+    res.send({
+        final_result:final_result,
+        sub_results:{
+            distance,
+            distance_jia,
+            density,
+            density_dist}
+    })
 })
 
 

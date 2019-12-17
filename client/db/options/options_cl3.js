@@ -25,43 +25,28 @@ const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
 const {single_density,list_density} = require('../../src/utils/single ontology cal/hybrid/density')
-const ancestorDense = require('../../src/utils/single ontology cal/hybrid/ancestorDensity')
+const ancDest = require('../../src/utils/single ontology cal/hybrid/ancestorDensity')
 // hybrid calculations
 
 const {tool,size,height,connections} = require('../data/ontology3')
 // Ontology Import
 
-const term = "flu"
+const term = "heart monitor"
 
 const option_1 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[common_properties(recursive(term,tool),size)],height:height}
+    json: { Client:3 , Response:[ancDest(term,tool,[],connections) ],density:connections.density,height:height,total_density:connections.total_density}
 }
-
 
 const option_2 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[ synonyms_array(recursive(term,tool)) ],height:height}
+    json: { Client:3 , Response:[distance_center(recursive(term,tool)) ],density:connections.density,height:height,total_density:connections.total_density}
 }
 
-const option_3 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[ ancestor(term,tool,[]) ],height:height}
-}
-
-
-const option_4 = {
-    method:'POST',
-    url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:3 , Response:[ node_name(recursive(term,tool)) ],height:height}
-}
 
 module.exports = {
     option_1,
-    option_2,
-    option_3,
-    option_4
+    option_2
 }
