@@ -18,7 +18,7 @@ const {link_calculation,ontology_link_cal} = require('../../src/utils/single ont
 // tlnd specific Calculation
 
 const common_properties = require('../../src/utils/single ontology cal/slo/common_prop')
-const term_name = require('../../src/utils/single ontology cal/slo/term_name')
+const {term_name,node_link} = require('../../src/utils/single ontology cal/slo/term_name')
 const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
@@ -31,7 +31,7 @@ const {equipment,size,height,connections} = require('../data/ontology2')
 
 
 
-const term = "equipment"
+const term = "intradermal syringe"
 
 const option_1 = {
     method:'POST',
@@ -45,7 +45,21 @@ const option_2 = {
     json: { Client:2 , Response:[distance_center(recursive(term,equipment)) ],density:connections.density,height:height,total_density:connections.total_density}
 }
 
+const option_3 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:2 , Response:[term_name(recursive(term,equipment)) ],density:connections.density,height:height,total_density:connections.total_density}
+}
+
+const option_4 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:2 , Response:[ontology_link_cal(recursive(term,equipment)) ],density:connections.density,height:height,total_density:connections.total_density}
+}
+
 module.exports = {
     option_1,
-    option_2
+    option_2,
+    option_3,
+    option_4
 }

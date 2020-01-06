@@ -43,9 +43,24 @@ const option_2 = {
     json: { Client:4 , Response:[distance_center(recursive(term,instrument)) ],density:connections.density,height:height,total_density:connections.total_density}
 }
 
+const option_3 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:4 , Response:[term_name(recursive(term,instrument)) ],density:connections.density,height:height,total_density:connections.total_density}
+}
+
+const option_4 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:4 , Response:[ontology_link_cal(recursive(term,instrument)) ],density:connections.density,height:height,total_density:connections.total_density}
+}
+
+
 
 
 module.exports = {
     option_1,
-    option_2
+    option_2,
+    option_3,
+    option_4
 }

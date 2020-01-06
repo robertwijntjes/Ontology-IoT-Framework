@@ -102,53 +102,54 @@ app.post('/interface/data',(req,res)=>{
 
 })
 
-app.get('/interface/simcal',(req,res)=>{
-    res.send(simcheck(database[0].Response[0].operation,database[1].Response[1].operation))
-})
+// app.get('/interface/simcal',(req,res)=>{
+//     res.send(simcheck(database[0].Response[0].operation,database[1].Response[1].operation))
+// })
 
-app.get('/interface/tlnd',(req,res)=>{
-    const result = tlnd_prep(database,['tlnd_dist','tlnd_node_density','tlnd_weight','tlnd_link_cal'])
-    const a = density(result.density[0].value,result.density[1].value)
-    const b = link_weight(result.weight[0].value,result.weight[1].value)
-    const c = node_depth(result.dist[0].value,result.dist[1].value)
-    const d = type_of_link(result.link[0].value,result.link[1].value)
-    const tlnd = a + b + c + d
-
-
-    res.send({tlnd_result:tlnd,density:a,weight:b,node_depth:c,link:d})
-})
-
-app.get('/interface/sdamo',(req,res)=>{
-    const result = sdamo_prep(database,['distance_center','ancestor_search'])
-
-    const a = doh(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
-    const b = sb(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
-    const c = scd(result.semantic_coincidence_degree[0].value,result.semantic_coincidence_degree[1].value)
-    const sdamo = a+b+c
+// app.get('/interface/tlnd',(req,res)=>{
+//     const result = tlnd_prep(database,['tlnd_dist','tlnd_node_density','tlnd_weight','tlnd_link_cal'])
+//     const a = density(result.density[0].value,result.density[1].value)
+//     const b = link_weight(result.weight[0].value,result.weight[1].value)
+//     const c = node_depth(result.dist[0].value,result.dist[1].value)
+//     const d = type_of_link(result.link[0].value,result.link[1].value)
+//     const tlnd = a + b + c + d
 
 
-    res.send({sdamo_result:sdamo,depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
-})
+//     res.send({tlnd_result:tlnd,density:a,weight:b,node_depth:c,link:d})
+// })
 
-app.get('/interface/slo',(req,res)=>{
-    const result = slo_prep(database,['common_prop','synonyms_array','ancestor_search','nodename'])
-    const common_properties = common_prop(result.common_prop[0].value,result.common_prop[1].value)
-    const synonyms = syn(result.synonyms_array[0].value,result.synonyms_array[1].value)
-    const ancestor = ancestor_sim(result.ancestor_search[0].value,result.ancestor_search[1].value)
-    const nodesname = term(result.nodename[0].value,result.nodename[1].value)
+// app.get('/interface/sdamo',(req,res)=>{
+//     const result = sdamo_prep(database,['distance_center','ancestor_search'])
 
-    const slo = common_properties + synonyms + ancestor + nodesname
-    res.send({SLO:slo,common_properties,synonyms,ancestor,nodesname})
-})
+//     const a = doh(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
+//     const b = sb(result.depth_of_heirarchy[0].value,result.depth_of_heirarchy[1].value)
+//     const c = scd(result.semantic_coincidence_degree[0].value,result.semantic_coincidence_degree[1].value)
+//     const sdamo = a+b+c
+
+
+//     res.send({sdamo_result:sdamo,depth_of_heirarchy: a,semantic_bias: b,semantic_coincidence_degree: c})
+// })
+
+// app.get('/interface/slo',(req,res)=>{
+//     const result = slo_prep(database,['common_prop','synonyms_array','ancestor_search','nodename'])
+//     const common_properties = common_prop(result.common_prop[0].value,result.common_prop[1].value)
+//     const synonyms = syn(result.synonyms_array[0].value,result.synonyms_array[1].value)
+//     const ancestor = ancestor_sim(result.ancestor_search[0].value,result.ancestor_search[1].value)
+//     const nodesname = term(result.nodename[0].value,result.nodename[1].value)
+
+//     const slo = common_properties + synonyms + ancestor + nodesname
+//     res.send({SLO:slo,common_properties,synonyms,ancestor,nodesname})
+// })
 
 app.get('/interface/hyb',(req,res)=>{
-    const result = hyb_prep(database,['distance_center','ancDest'])
+    const result = hyb_prep(database,['distance_center','ancDest','term_name','tlnd_link_cal'])
 
     const distance = hyb_dist(result.distance_center[0].value,result.distance_center[1].value,database[0].height,database[1].height)
     const density = hyb_dense(result.ancestor_density[0].value,result.ancestor_density[1].value,database[0].density,database[1].density)
     const density_dist = hyb_dense_dist(result.ancestor_density[0].value,result.ancestor_density[1].value,database[0].total_density,database[1].total_density)
     const distance_jia = hyb_dist_jia(result.distance_center[0].value,result.distance_center[1].value,database[0].height,database[1].height)
-
+    const levenstein = term(result.levenstein[0].value,result.levenstein[1].value)
+    const link_compare = type_of_link(result.link_type[0].value,result.link_type[1].value)
 
     const final_result = non_bias_cal(distance,density,density_dist,distance_jia)
     
@@ -158,7 +159,13 @@ app.get('/interface/hyb',(req,res)=>{
             distance,
             distance_jia,
             density,
-            density_dist}
+            density_dist,
+        },
+        testing:{
+            link_compare,
+            levenstein
+        
+        }
     })
 })
 

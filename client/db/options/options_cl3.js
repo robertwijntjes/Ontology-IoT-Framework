@@ -31,7 +31,7 @@ const ancDest = require('../../src/utils/single ontology cal/hybrid/ancestorDens
 const {tool,size,height,connections} = require('../data/ontology3')
 // Ontology Import
 
-const term = "heart monitor"
+const term = "flu"
 
 const option_1 = {
     method:'POST',
@@ -45,8 +45,21 @@ const option_2 = {
     json: { Client:3 , Response:[distance_center(recursive(term,tool)) ],density:connections.density,height:height,total_density:connections.total_density}
 }
 
+const option_3 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:3 , Response:[term_name(recursive(term,equipment)) ],density:connections.density,height:height,total_density:connections.total_density}
+}
+
+const option_4 = {
+    method:'POST',
+    url:'http://127.0.0.1:3000/interface/data',
+    json: { Client:3 , Response:[ontology_link_cal(recursive(term,equipment)) ],density:connections.density,height:height,total_density:connections.total_density}
+}
 
 module.exports = {
     option_1,
-    option_2
+    option_2,
+    option_3,
+    option_4
 }

@@ -59,9 +59,9 @@ const slo_prep = (database,op) =>{
     const synonyms_array = result.filter(x=>x.type == op[1])
     const ancestor_search = result.filter(x=>x.type == op[2])
     const nodename = result.filter(x=>x.type == op[3])
+    const link = result.filter(x=>x.type == op[4])
 
-
-    return ({common_prop,synonyms_array,ancestor_search,nodename})
+    return ({common_prop,synonyms_array,ancestor_search,nodename,link})
 
 }
 
@@ -81,8 +81,10 @@ const hyb_prep = (database,op) =>{
 
     const distance_center =  result.filter(x=>x.type == op[0])
     const ancestor_density = result.filter(x=>x.type == op[1])
+    const levenstein = result.filter(x=>x.type == op[2])
+    const link_type = result.filter(x=>x.type == op[3])
 
-    return ({distance_center,ancestor_density})
+    return ({distance_center,ancestor_density,levenstein,link_type})
 
 }
 

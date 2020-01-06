@@ -11,7 +11,8 @@ module.exports = density
 
 /*
 
-From Ontology to Semantic Similarity: Calculation of Ontology-Based Semantic Similarity
+    From Ontology to Semantic Similarity: Calculation of Ontology-Based Semantic Similarity
 
-PC = n*(n-1)/2
+    PC = n*(n-1)/2
+
 */
