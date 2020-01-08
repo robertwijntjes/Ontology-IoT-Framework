@@ -151,10 +151,12 @@ app.get('/interface/hyb',(req,res)=>{
     const levenstein = term(result.levenstein[0].value,result.levenstein[1].value)
     const link_compare = type_of_link(result.link_type[0].value,result.link_type[1].value)
 
-    const final_result = non_bias_cal(distance,density,density_dist,distance_jia)
+    const final_result = non_bias_cal(distance,density,density_dist,distance_jia,levenstein,link_compare)
     
     res.send({
-        final_result:final_result,
+        FINAL_CALCULATION:{
+            final_result
+        },
         sub_results:{
             distance,
             distance_jia,
