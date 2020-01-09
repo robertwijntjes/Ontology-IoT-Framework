@@ -18,12 +18,13 @@ const {link_calculation,ontology_link_cal} = require('../../src/utils/single ont
 // tlnd specific Calculation
 
 const common_properties = require('../../src/utils/single ontology cal/slo/common_prop')
-const term_name = require('../../src/utils/single ontology cal/slo/term_name')
+const  {term_name,node_link} = require('../../src/utils/single ontology cal/slo/term_name')
 const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
 const {single_density,list_density} = require('../../src/utils/single ontology cal/hybrid/density')
 const ancDest = require('../../src/utils/single ontology cal/hybrid/ancestorDensity')
+const linkDest = require('../../src/utils/single ontology cal/hybrid/full_link_cal')
 // hybrid calculations
 
 const {instrument,size,height,connections} = require('../data/ontology4')
@@ -52,7 +53,7 @@ const option_3 = {
 const option_4 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:4 , Response:[ontology_link_cal(recursive(term,instrument)) ],density:connections.density,height:height,total_density:connections.total_density}
+    json: { Client:4 , Response:[linkDest(term,instrument,[]) ],density:connections.density,height:height,total_density:connections.total_density}
 }
 
 

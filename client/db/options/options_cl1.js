@@ -31,7 +31,7 @@ const linkDest = require('../../src/utils/single ontology cal/hybrid/full_link_c
 const {equipment,size,height,connections} = require('../data/ontology1')
 // Ontology Import
 
-const term = "equipment"
+const term = "injection syringe"
 
 const option_1 = {
     method:'POST',

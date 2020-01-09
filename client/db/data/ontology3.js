@@ -58,7 +58,7 @@ const flu = new ont_node({
     nodeName:"flu",
     relationship:"instance" ,
     connected_to:[],
-    linked_to:["suceptability"],
+    linked_to:["susceptibility"],
     level:3,
     connections:1,
     attributes:["flu_id","flu_name","tool_id","feature"]})

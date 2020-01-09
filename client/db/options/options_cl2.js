@@ -24,6 +24,7 @@ const node_name = require('../../src/utils/single ontology cal/term_name_get')
 
 const {single_density,list_density} = require('../../src/utils/single ontology cal/hybrid/density')
 const ancDest = require('../../src/utils/single ontology cal/hybrid/ancestorDensity')
+const linkDest = require('../../src/utils/single ontology cal/hybrid/full_link_cal')
 // hybrid calculations
 
 const {equipment,size,height,connections} = require('../data/ontology2')
@@ -32,6 +33,7 @@ const {equipment,size,height,connections} = require('../data/ontology2')
 
 
 const term = "plastic component"
+
 
 const option_1 = {
     method:'POST',
@@ -54,7 +56,7 @@ const option_3 = {
 const option_4 = {
     method:'POST',
     url:'http://127.0.0.1:3000/interface/data',
-    json: { Client:2 , Response:[ontology_link_cal(recursive(term,equipment)) ],density:connections.density,height:height,total_density:connections.total_density}
+    json: { Client:2 , Response:[linkDest(term,equipment,[]) ],density:connections.density,height:height,total_density:connections.total_density}
 }
 
 module.exports = {

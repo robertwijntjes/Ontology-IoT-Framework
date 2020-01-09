@@ -19,7 +19,7 @@ const scd = require('./utils/Complex/SDAMO/SCD')
 const density = require('./utils/Complex/TLND/density')
 const link_weight = require('./utils/Complex/TLND/link_weight')
 const node_depth = require('./utils/Complex/TLND/node_depth')
-const type_of_link = require('./utils/Complex/TLND/type_of_link')
+const {type_of_link,type_of_links} = require('./utils/Complex/TLND/type_of_link')
 // TLND Algorithm
 
 
@@ -142,14 +142,15 @@ app.post('/interface/data',(req,res)=>{
 // })
 
 app.get('/interface/hyb',(req,res)=>{
-    const result = hyb_prep(database,['distance_center','ancDest','term_name','tlnd_link_cal'])
+    const result = hyb_prep(database,['distance_center','ancDest','term_name','linkDest'])
+    console.log(result.link_type)
 
     const distance = hyb_dist(result.distance_center[0].value,result.distance_center[1].value,database[0].height,database[1].height)
     const density = hyb_dense(result.ancestor_density[0].value,result.ancestor_density[1].value,database[0].density,database[1].density)
     const density_dist = hyb_dense_dist(result.ancestor_density[0].value,result.ancestor_density[1].value,database[0].total_density,database[1].total_density)
     const distance_jia = hyb_dist_jia(result.distance_center[0].value,result.distance_center[1].value,database[0].height,database[1].height)
     const levenstein = term(result.levenstein[0].value,result.levenstein[1].value)
-    const link_compare = type_of_link(result.link_type[0].value,result.link_type[1].value)
+    const link_compare = type_of_links(result.link_type[0].value,result.link_type[1].value)
 
     const final_result = non_bias_cal(distance,density,density_dist,distance_jia,levenstein,link_compare)
     
