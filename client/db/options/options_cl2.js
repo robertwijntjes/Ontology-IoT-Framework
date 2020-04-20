@@ -32,7 +32,7 @@ const {equipment,size,height,connections} = require('../data/ontology2')
 
 
 
-const term = "plastic component"
+const term = "intradermal syringe"
 
 
 const option_1 = {

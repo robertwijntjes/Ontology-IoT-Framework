@@ -30,7 +30,7 @@ const ancDest = (term,currentNode,tree,connections) =>{
     tree.push(single_density(currentNode.connections,connections))
 
     if(currentNode.nodeName == term){
-        return tree
+        return {operation:tree,type:'ancDest',input:term}
     }
 
     if(currentNode.connected_to.length > 0){

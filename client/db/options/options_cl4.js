@@ -18,7 +18,7 @@ const {link_calculation,ontology_link_cal} = require('../../src/utils/single ont
 // tlnd specific Calculation
 
 const common_properties = require('../../src/utils/single ontology cal/slo/common_prop')
-const  {term_name,node_link} = require('../../src/utils/single ontology cal/slo/term_name')
+const {term_name,node_link} = require('../../src/utils/single ontology cal/slo/term_name')
 const node_name = require('../../src/utils/single ontology cal/term_name_get')
 // Slo Calculations
 
